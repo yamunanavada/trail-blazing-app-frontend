@@ -1,6 +1,7 @@
 import React from "react";
 import Map from "../components/Map"
 import CreateRouteDetailsForm from "../components/CreateRouteDetailsForm"
+import { GoogleMapAdapter } from "../adapters"
 
 
 class CreateRouteContainer extends React.Component {
@@ -37,13 +38,7 @@ class CreateRouteContainer extends React.Component {
   //   })
   // }
 
-  // fetchStaticGoogleMaps = (address) => {
-  //
-  //   let cleanAddress = address.split(' ').join('%20')
-  //   const apiKey = process.env.REACT_APP_API_KEY
-  //   const URL = `https://maps.googleapis.com/maps/api/geocode/json?&address=${cleanAddress}&key=${apiKey}`
-  //   return fetch(URL).then(res => res.json())
-  // }
+
 
   // handleLocationSubmit = (e) => {
   //   e.preventDefault();
@@ -62,15 +57,16 @@ class CreateRouteContainer extends React.Component {
 
   handleCitySubmit = (event) => {
     event.preventDefault();
-    console.log(event)
-    this.setState({
-      startingCity: event.target.value
-    }, console.log(this.state))
+    // this should be responsible for calling the fetch to get the coordinates of the starting city and send to the reducer to change state --> need these coordinates to be passed to the map container
+
+    GoogleMapAdapter.fetchStaticGoogleMaps(event.target.citysearch.value)
+    .then(res => this.setState({
+      startingCityCoords: {lat: res.results[0].geometry.location.lat, lng: res.results[0].geometry.location.lng}
+    }))
 
   }
 
   handleCityInput = (event) => {
-    console.log(event.target.value)
     this.setState({
       startingCity: event.target.value
     })
@@ -94,4 +90,7 @@ class CreateRouteContainer extends React.Component {
     )
   }
  }
+
+
+
 export default CreateRouteContainer

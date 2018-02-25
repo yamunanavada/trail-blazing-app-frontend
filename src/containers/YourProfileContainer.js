@@ -4,7 +4,6 @@ import YourProfileDetails from '../components/YourProfileDetails'
 
 class YourProfileContainer extends React.Component {
 
-  // this will need state - we need to be able to have a user search for a city, then pass the coordinates of that city off to the Map container
 
   render() {
     return (
