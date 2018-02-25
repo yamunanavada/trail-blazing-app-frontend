@@ -12,12 +12,17 @@ const Map = compose(
       mapElement: <div style={{ height: `100%` }} />,
     }),
     withScriptjs,
+    withHandlers({
+      handleClick: props => event => {
+        console.log(event)
+      }
+    }),
     withGoogleMap
   )((props) =>
     <GoogleMap
       defaultZoom={10}
-      defaultCenter={{ lat: props.startingCityCoords.lat, lng: props.startingCityCoords.lng}}
-    >
+      center={{ lat: props.startingCityCoords.lat, lng: props.startingCityCoords.lng}}
+      onClick={props.handleClick}>
     </GoogleMap>
   )
 
