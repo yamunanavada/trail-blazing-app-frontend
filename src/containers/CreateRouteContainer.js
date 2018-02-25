@@ -2,17 +2,25 @@ import React from "react";
 import Map from "../components/Map"
 import CreateRouteDetailsForm from "../components/CreateRouteDetailsForm"
 import { GoogleMapAdapter } from "../adapters"
+import { connect} from 'react-redux'
+import { updateStartingCity } from '../actions'
 
 
 class CreateRouteContainer extends React.Component {
 
-  state = {
-    startingCity: '',
-    startingCityCoords: {
-      lat: 40.7128,
-      lng: -74.0060
-    }
+  constructor(props){
+    super(props)
+
+    this. state = {
+        startingCity: '',
+        startingCityCoords: {
+          lat: 40.7128,
+          lng: -74.0060
+        }
+      }
   }
+
+
 
   // this will need state - we need to be able to have a user search for a city, then pass the coordinates of that city off to the Map container
 
@@ -62,8 +70,7 @@ class CreateRouteContainer extends React.Component {
     GoogleMapAdapter.fetchStaticGoogleMaps(event.target.citysearch.value)
     .then(res => this.setState({
       startingCityCoords: {lat: res.results[0].geometry.location.lat, lng: res.results[0].geometry.location.lng}
-    }))
-
+    })).then( res => this.props.updateStartingCity(this.state))
   }
 
   handleCityInput = (event) => {
@@ -91,6 +98,15 @@ class CreateRouteContainer extends React.Component {
   }
  }
 
+ const mapStateToProps = (state) => {
+   // debugger;
+   return { startingCity: state.startingCity, startingCityCoords: state.startingCityCoords}
+ }
+
+ // const mapDispatchToProps = (dispatch) => {
+ //
+ // }
 
 
-export default CreateRouteContainer
+
+export default connect(mapStateToProps, {updateStartingCity})(CreateRouteContainer)

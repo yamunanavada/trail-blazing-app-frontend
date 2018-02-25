@@ -1,6 +1,11 @@
 // //This is just one example of an adapter class for containing our fetches
 // import { RestfulAdapter } from "../adapters";
 //
+
+export function updateStartingCity(citydata) {
+  return { type: "ADD_CITY", payload: citydata }
+
+}
 // export function fetchHobsWithJobs() {
 //   //using thunk, we return are returning a function here instead of
 //   //a plain object.  Thunk intercepts this returned value, and if it is a

@@ -1,17 +1,3 @@
-// export default function manageUsers(
-//   state = {
-//     users: []
-//   }, action){
-//   switch (action.type) {
-//     case "ADD_USER":
-//       return Object.assign({}, state, {users: state.users.concat(action.user)});
-//
-//     default:
-//       return state
-//     }
-//
-// }
-
 export default function manageStartingCity(
   state = {
     startingCity: '',
@@ -19,17 +5,16 @@ export default function manageStartingCity(
       lat: 40.7128,
       lng: -74.0060
     }
-  }, action{
+  }, action){
     switch (action.type){
       case "ADD_CITY":
+        console.log("previous state:", state)
         return Object.assign({}, state, {startingCity: action.startingCity, startingCityCoords: {
-          lat: action.lat,
-          lng: action.lng
+          lat: action.startingCityCoords.lat,
+          lng: action.startingCityCoords.lng
         }})
 
       default:
         return state
     }
   }
-
-)

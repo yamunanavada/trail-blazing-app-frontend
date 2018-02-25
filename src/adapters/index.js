@@ -41,7 +41,7 @@ export class GoogleMapAdapter {
   static fetchStaticGoogleMaps = (address) => {
 
     let cleanAddress = address.split(' ').join('%20')
-    const apiKey = 
+    const apiKey = ""
     const URL = `https://maps.googleapis.com/maps/api/geocode/json?&address=${cleanAddress}&key=${apiKey}`
     return fetch(URL).then(res => res.json())
   }
