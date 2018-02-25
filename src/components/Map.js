@@ -11,10 +11,14 @@ const Map = compose(
       containerElement: <div className="map-container" />,
       mapElement: <div style={{ height: `100%` }} />,
     }),
+    withState('waypoints', 'setWaypoints',[]),
     withScriptjs,
     withHandlers({
       handleClick: props => event => {
         console.log(event)
+        let newLat = event.latLng.lat()
+        let newLng = event.latLng.lng()
+        props.setWaypoints(props.waypoints.push({lat: newLat, lng: newLng}))
       }
     }),
     withGoogleMap
