@@ -2,6 +2,7 @@
 import React from "react"
 import { withScriptjs, withGoogleMap, GoogleMap, Marker, DirectionsRenderer} from 'react-google-maps'
 import { compose, withProps, lifecycle, withHandlers } from "recompose"
+import { connect } from 'react-redux'
 
 const Map = compose(
     withProps({
@@ -14,11 +15,14 @@ const Map = compose(
     withGoogleMap
   )((props) =>
     <GoogleMap
-      defaultZoom={5}
-      defaultCenter={{ lat: 35.7596, lng: -79.0193}}
+      defaultZoom={10}
+      defaultCenter={{ lat: props.startingCityCoords.lat, lng: props.startingCityCoords.lng}}
     >
-      {props.isMarkerShown && <Marker position={{ lat: -34.397, lng: 150.644 }} />}
     </GoogleMap>
   )
 
-export default Map
+const mapStateToProps = (state) => {
+  return {startingCityCoords: state.startingCityCoords}
+}
+
+export default connect(mapStateToProps)(Map)
