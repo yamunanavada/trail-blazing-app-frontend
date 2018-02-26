@@ -6,6 +6,11 @@ export function updateStartingCity(citydata) {
   return { type: "ADD_CITY", payload: citydata }
 
 }
+
+
+export function updateWaypoints(waypoint){
+  return { type: "ADD_WAYPOINT", payload: waypoint}
+}
 // export function fetchHobsWithJobs() {
 //   //using thunk, we return are returning a function here instead of
 //   //a plain object.  Thunk intercepts this returned value, and if it is a
@@ -18,26 +23,4 @@ export function updateStartingCity(citydata) {
 //       dispatch({ type: "HOBBIT_LOAD", payload: data });
 //     });
 //   };
-// }
-//
-// export function selectHobbit(hobbit) {
-//   return { type: "SELECT_HOBBIT", payload: hobbit };
-// }
-//
-// export function updateHobbit({ id, name, title, key_skill }) {
-//   return dispatch => {
-//     RestfulAdapter.editFetch("hobbits", id, {
-//       hobbit: { name, title, key_skill }
-//     }).then(data => {
-//       dispatch(setHobbit(data));
-//     });
-//   };
-// }
-//
-// export function setHobbit(hobbit) {
-//   return { type: "SET_HOBBIT", payload: hobbit };
-// }
-//
-// export function updateForm(formData) {
-//   return { type: "UPDATE_FORM", payload: formData };
 // }

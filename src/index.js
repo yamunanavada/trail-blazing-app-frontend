@@ -8,14 +8,12 @@ import { createStore, applyMiddleware } from 'redux';
 import thunk from 'redux-thunk'
 import manageStartingCity from "./reducers"
 import { BrowserRouter, Route } from 'react-router-dom'
-
-const store = createStore(manageStartingCity, applyMiddleware(thunk))
-// need to pass in store
+import { store } from './store'
 
 ReactDOM.render(
   <Provider store={store}>
     <BrowserRouter>
-    <App store={store}/>
+    <App />
     </BrowserRouter>
   </Provider>,
   document.getElementById('root')

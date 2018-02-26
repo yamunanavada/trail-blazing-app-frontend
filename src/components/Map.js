@@ -3,22 +3,26 @@ import React from "react"
 import { withScriptjs, withGoogleMap, GoogleMap, Marker, DirectionsRenderer} from 'react-google-maps'
 import { compose, withProps, lifecycle, withHandlers, withState } from "recompose"
 import { connect } from 'react-redux'
+import { updateWaypoints } from '../actions'
+
+  // withState('waypoints', 'setWaypoints',[]), --> was originally addded to deal with event handlers. lets see if we get the redux to work firsst.
 
 const Map = compose(
     withProps({
-      googleMapURL: "https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places",
+      googleMapURL: "",
       loadingElement: <div style={{ height: `100%` }} />,
       containerElement: <div className="map-container" />,
       mapElement: <div style={{ height: `100%` }} />,
     }),
-    withState('waypoints', 'setWaypoints',[]),
     withScriptjs,
     withHandlers({
       handleClick: props => event => {
         console.log(event)
         let newLat = event.latLng.lat()
         let newLng = event.latLng.lng()
-        props.setWaypoints(props.waypoints.push({lat: newLat, lng: newLng}))
+        props.updateWaypoints({lat: newLat, lng: newLng})
+
+        console.log("this is props.waypoints", props.waypoints)
       }
     }),
     lifecycle({
@@ -39,6 +43,7 @@ const Map = compose(
         travelMode: google.maps.TravelMode.DRIVING,
         waypoints: waypoints()
       }, (result, status) => {
+        console.log(result)
         if (status === google.maps.DirectionsStatus.OK) {
           this.setState({
             directions: result,
@@ -56,11 +61,14 @@ const Map = compose(
       defaultZoom={10}
       center={{ lat: props.startingCityCoords.lat, lng: props.startingCityCoords.lng}}
       onClick={props.handleClick}>
+      {props.directions && <DirectionsRenderer directions={props.directions} />}
     </GoogleMap>
   )
 
 const mapStateToProps = (state) => {
-  return {startingCityCoords: state.startingCityCoords}
+  return {
+    startingCityCoords: state.manageStartingCity.startingCityCoords,
+    waypoints: state.setWaypoints.waypoints}
 }
 
-export default connect(mapStateToProps)(Map)
+export default connect(mapStateToProps, {updateWaypoints})(Map)
