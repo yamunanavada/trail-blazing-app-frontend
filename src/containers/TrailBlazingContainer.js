@@ -9,8 +9,8 @@ class TrailBlazingContainer extends React.Component {
 
   render() {
     return (
-      <div >
-        <CreateRouteContainer />
+      <div className="trail-container">
+        <SignIn />
       </div>
 
     )

@@ -1,7 +1,7 @@
 /* global google */
 import React from "react"
 import { withScriptjs, withGoogleMap, GoogleMap, Marker, DirectionsRenderer} from 'react-google-maps'
-import { compose, withProps, lifecycle, withHandlers } from "recompose"
+import { compose, withProps, lifecycle, withHandlers, withState } from "recompose"
 import { connect } from 'react-redux'
 
 const Map = compose(
@@ -21,6 +21,35 @@ const Map = compose(
         props.setWaypoints(props.waypoints.push({lat: newLat, lng: newLng}))
       }
     }),
+    lifecycle({
+      shouldComponentUpdate(nextProps){
+        console.log(nextProps)
+      const waypoints = () => {
+        return nextProps.waypoints.map(waypoint => ({location: new google.maps.LatLng(waypoint.lat, waypoint.lng)}))
+      }
+
+
+      console.log("waypoints", waypoints())
+
+      const DirectionsService = new google.maps.DirectionsService();
+
+      DirectionsService.route({
+        origin: new google.maps.LatLng(41.8507300, -87.6412600),
+        destination: new google.maps.LatLng(41.8525800, -87.6514100),
+        travelMode: google.maps.TravelMode.DRIVING,
+        waypoints: waypoints()
+      }, (result, status) => {
+        if (status === google.maps.DirectionsStatus.OK) {
+          this.setState({
+            directions: result,
+          });
+        } else {
+          console.error(`error fetching directions ${result}`);
+        }
+      })
+      return true
+    }
+  }),
     withGoogleMap
   )((props) =>
     <GoogleMap
