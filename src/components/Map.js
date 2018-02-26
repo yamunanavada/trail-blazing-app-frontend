@@ -27,33 +27,35 @@ const Map = compose(
     }),
     lifecycle({
       shouldComponentUpdate(nextProps){
-        console.log(nextProps)
-      const waypoints = () => {
-        return nextProps.waypoints.map(waypoint => ({location: new google.maps.LatLng(waypoint.lat, waypoint.lng)}))
-      }
-
-
-      console.log("waypoints", waypoints())
-
-      const DirectionsService = new google.maps.DirectionsService();
-
-      DirectionsService.route({
-        origin: new google.maps.LatLng(41.8507300, -87.6412600),
-        destination: new google.maps.LatLng(41.8525800, -87.6514100),
-        travelMode: google.maps.TravelMode.DRIVING,
-        waypoints: waypoints()
-      }, (result, status) => {
-        console.log(result)
-        if (status === google.maps.DirectionsStatus.OK) {
-          this.setState({
-            directions: result,
-          });
-        } else {
-          console.error(`error fetching directions ${result}`);
+        // console.log(nextProps)
+        // First convert the waypoints into google maps latlng objects
+        const waypoints = () => {
+          return nextProps.waypoints.map(waypoint => ({location: new google.maps.LatLng(waypoint.lat, waypoint.lng)}))
         }
-      })
-      return true
-    }
+        let waypointsGoogle = waypoints()
+        let middlepoints = waypointsGoogle.slice(1,waypointsGoogle.length-1)
+
+
+        // create a new directsion service request
+        const DirectionsService = new google.maps.DirectionsService();
+        // send the waypoints to the direction service request
+        DirectionsService.route({
+          origin: waypointsGoogle[0],
+          destination: waypointsGoogle[waypointsGoogle.length-1],
+          travelMode: google.maps.TravelMode.WALKING,
+          waypoints: middlepoints
+        }, (result, status) => {
+          console.log(result)
+          if (status === google.maps.DirectionsStatus.OK) {
+            this.setState({
+              directions: result,
+            });
+          } else {
+            console.error(`error fetching directions ${result}`);
+          }
+        })
+        return true
+      }
   }),
     withGoogleMap
   )((props) =>
