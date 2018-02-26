@@ -1,6 +1,5 @@
 // //Adapters allow us to abstract out repetitive code, such as the base url and headers
-// const baseUrl = `http://localhost:3000/`;
-
+const baseUrl = `http://localhost:3000/`;
 
 function headers() {
   return {
@@ -8,7 +7,7 @@ function headers() {
     Accept: "application/json"
   };
 }
-//
+
 // export class RestfulAdapter {
 //   static indexFetch(route) {
 //     return fetch(`${baseUrl}/${route}`, getRequest()).then(responseHandler);
@@ -41,7 +40,7 @@ export class GoogleMapAdapter {
   static fetchStaticGoogleMaps = (address) => {
 
     let cleanAddress = address.split(' ').join('%20')
-    const apiKey = ""
+    const apiKey = process.env.REACT_APP_API_KEY
     const URL = `https://maps.googleapis.com/maps/api/geocode/json?&address=${cleanAddress}&key=${apiKey}`
     return fetch(URL).then(res => res.json())
   }

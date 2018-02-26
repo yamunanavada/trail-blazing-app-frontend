@@ -4,12 +4,12 @@ const CreateRouteDetailsForm = () => {
 
   return (
     <div className="create-route-form">
-      <h3>Name of City</h3>
+      <h3>What's your route?</h3>
         <form action="/action_page.php">
-          <label for="routename">First Name</label>
+          <label for="routename">Name Your Route</label>
           <input type="text" id="routename" name="route_name" placeholder="Name of Route..."/><br></br>
 
-          <label for="routedescription">Last Name</label>
+          <label for="routedescription">Description</label>
           <input type="text" id="routedescription" name="route_description" placeholder="Description of Route.."/><br></br>
 
           <label for="difficulty">Difficulty Level</label>

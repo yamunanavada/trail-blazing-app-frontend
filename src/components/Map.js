@@ -9,7 +9,7 @@ import { updateWaypoints } from '../actions'
 
 const Map = compose(
     withProps({
-      googleMapURL: "",
+      googleMapURL: "https://maps.googleapis.com/maps/api/js?key=AIzaSyC4R6AN7SmujjPUIGKdyao2Kqitzr1kiRg&v=3.exp&libraries=geometry,drawing,places",
       loadingElement: <div style={{ height: `100%` }} />,
       containerElement: <div className="map-container" />,
       mapElement: <div style={{ height: `100%` }} />,
@@ -21,7 +21,6 @@ const Map = compose(
         let newLat = event.latLng.lat()
         let newLng = event.latLng.lng()
         props.updateWaypoints({lat: newLat, lng: newLng})
-
         console.log("this is props.waypoints", props.waypoints)
       }
     }),
@@ -34,8 +33,6 @@ const Map = compose(
         }
         let waypointsGoogle = waypoints()
         let middlepoints = waypointsGoogle.slice(1,waypointsGoogle.length-1)
-
-
         // create a new directsion service request
         const DirectionsService = new google.maps.DirectionsService();
         // send the waypoints to the direction service request
