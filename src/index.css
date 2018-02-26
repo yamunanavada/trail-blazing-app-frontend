@@ -48,7 +48,8 @@ li a:hover {
   grid-gap: 10px;
   grid-template-rows: repeat(5, 1fr);
   height: 800px;
-  width: auto
+  width: auto;
+  background-color: black
 }
 
 .profile-container {

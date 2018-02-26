@@ -1,5 +1,6 @@
 import React from "react";
 import YourProfileDetails from '../components/YourProfileDetails'
+import SavedRoutesContainer from './SavedRoutesContainer'
 
 
 class YourProfileContainer extends React.Component {
@@ -12,6 +13,7 @@ class YourProfileContainer extends React.Component {
           <h1>Your Profile</h1>
         </div>
         <YourProfileDetails />
+        <SavedRoutesContainer />
       </div>
 
     )
