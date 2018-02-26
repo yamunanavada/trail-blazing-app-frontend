@@ -4,6 +4,7 @@ import CreateRouteDetailsForm from "../components/CreateRouteDetailsForm"
 import { GoogleMapAdapter } from "../adapters"
 import { connect} from 'react-redux'
 import { updateStartingCity } from '../actions'
+import { RestfulAdapter } from '../adapters'
 
 
 class CreateRouteContainer extends React.Component {
@@ -16,52 +17,14 @@ class CreateRouteContainer extends React.Component {
         startingCityCoords: {
           lat: 40.7128,
           lng: -74.0060
+        },
+        newRouteDetails: {
+          route_name: "",
+          route_description: "",
+          difficulty: "easy"
         }
       }
   }
-
-
-
-  // this will need state - we need to be able to have a user search for a city, then pass the coordinates of that city off to the Map container
-
-// Below is an example of how to interact with the store (dispatch function) given a change in the state within the compnoent itslef
-
-  // state = {
-  //   username: '',
-  //   hometown: ''
-  // }
-  //
-  // handleSubmit = (event) => {
-  //   event.preventDefault();
-  //   // here i believe is where the dispatch function should get called - once the form has been submited
-  //   this.props.store.dispatch({
-  //     type: "ADD_USER",
-  //     user: this.state
-  //   })
-  // }
-  //
-  // handleChange = (event) => {
-  //   this.setState({
-  //     [event.target.name]: event.target.value
-  //   })
-  // }
-
-
-
-  // handleLocationSubmit = (e) => {
-  //   e.preventDefault();
-  //   let address = e.target.firstElementChild.value;
-  //
-  //   this.fetchStaticGoogleMaps(address).then(res => {
-  //     this.setState({
-  //       startingAddress: {lat: res.results[0].geometry.location.lat, lng: res.results[0].geometry.location.lng}
-  //     })
-  //      this.searchAddressForPlaces(res.results[0].geometry.location.lat, res.results[0].geometry.location.lng)
-  //      .then(res => this.setState({
-  //        searchResponse: res
-  //      }))
-  //   })
-  // }
 
   handleCitySubmit = (event) => {
     event.preventDefault();
@@ -74,12 +37,44 @@ class CreateRouteContainer extends React.Component {
   }
 
   handleCityInput = (event) => {
+    event.preventDefault()
     this.setState({
       startingCity: event.target.value
     })
   }
 
+  handleNewRouteChange = (event) => {
+    event.preventDefault()
+    this.setState({
+      ...this.state,
+      newRouteDetails: {
+        ...this.state.newRouteDetails,
+        [event.target.name]: event.target.value
+      }
+    })
+  }
+
+  handleFormSubmit = (event) => {
+    event.preventDefault()
+
+    let body = {
+      name: this.state.newRouteDetails.route_name,
+      city: this.props.startingCity,
+      description: this.state.newRouteDetails.route_description,
+      markers: this.props.waypoints,
+      difficulty: this.state.newRouteDetails.difficulty,
+      distance: this.props.distance,
+    }
+    debugger
+
+    // this should call a post fetch to the backend to save this route
+    RestfulAdapter.createFetch("routes", body)
+
+  }
+
   render() {
+    console.log("props", this.props)
+    console.log("state", this.state)
     return (
       <div className="create-container">
         <div className="page-title-bar" >
@@ -91,7 +86,7 @@ class CreateRouteContainer extends React.Component {
             </form>
         </div>
         <Map />
-        <CreateRouteDetailsForm />
+        <CreateRouteDetailsForm onInputChange={this.handleNewRouteChange} onFormSubmit={this.handleFormSubmit}/>
       </div>
 
     )
@@ -100,7 +95,11 @@ class CreateRouteContainer extends React.Component {
 
  const mapStateToProps = (state) => {
    // debugger;
-   return { startingCity: state.startingCity, startingCityCoords: state.startingCityCoords}
+   return { startingCity: state.manageStartingCity.startingCity,
+     startingCityCoords: state.manageStartingCity.startingCityCoords,
+     waypoints: state.mapReducer.waypoints,
+     distance: state.mapReducer.distance
+   }
  }
 
  // const mapDispatchToProps = (dispatch) => {

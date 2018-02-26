@@ -1,7 +1,7 @@
 import { combineReducers } from 'redux'
 import manageStartingCity from './manageStartingCity'
-import setWaypoints from './setWaypoints'
+import mapReducer from './mapReducer'
 
 export default combineReducers({
-  manageStartingCity, setWaypoints
+  manageStartingCity, mapReducer
 })

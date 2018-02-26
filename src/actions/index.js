@@ -7,10 +7,16 @@ export function updateStartingCity(citydata) {
 
 }
 
-
 export function updateWaypoints(waypoint){
   return { type: "ADD_WAYPOINT", payload: waypoint}
 }
+
+
+export function updateDistance(distance){
+  return { type: "ADD_DISTANCE", payload: distance }
+}
+
+
 // export function fetchHobsWithJobs() {
 //   //using thunk, we return are returning a function here instead of
 //   //a plain object.  Thunk intercepts this returned value, and if it is a

@@ -3,9 +3,9 @@ import React from "react"
 import { withScriptjs, withGoogleMap, GoogleMap, Marker, DirectionsRenderer} from 'react-google-maps'
 import { compose, withProps, lifecycle, withHandlers, withState } from "recompose"
 import { connect } from 'react-redux'
-import { updateWaypoints } from '../actions'
+import { updateWaypoints, updateDistance } from '../actions'
 
-  // withState('waypoints', 'setWaypoints',[]), --> was originally addded to deal with event handlers. lets see if we get the redux to work firsst.
+  // withState('waypoints', 'mapReducer',[]), --> was originally addded to deal with event handlers. lets see if we get the redux to work firsst.
 
 const Map = compose(
     withProps({
@@ -44,6 +44,9 @@ const Map = compose(
         }, (result, status) => {
           console.log(result)
           if (status === google.maps.DirectionsStatus.OK) {
+            // add a dispatch action here
+            console.log(result.routes[0].legs[result.routes[0].legs.length-1].distance.value)
+            nextProps.updateDistance(result.routes[0].legs[result.routes[0].legs.length-1].distance.value)
             this.setState({
               directions: result,
             });
@@ -67,7 +70,8 @@ const Map = compose(
 const mapStateToProps = (state) => {
   return {
     startingCityCoords: state.manageStartingCity.startingCityCoords,
-    waypoints: state.setWaypoints.waypoints}
+    waypoints: state.mapReducer.waypoints,
+    distance: state.mapReducer.distance}
 }
 
-export default connect(mapStateToProps, {updateWaypoints})(Map)
+export default connect(mapStateToProps, {updateWaypoints, updateDistance})(Map)
