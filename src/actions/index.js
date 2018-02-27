@@ -4,7 +4,6 @@ import { RestfulAdapter } from "../adapters";
 
 export function updateStartingCity(citydata) {
   return { type: "ADD_CITY", payload: citydata }
-
 }
 
 export function updateWaypoints(waypoint){
@@ -17,8 +16,15 @@ export function updateDistance(distance){
 }
 
 export function getRoutesFromSearch(city){
-  RestfulAdapter.indexFetch("routes")
-  .then(res => res.filter(route => route.city.toLowerCase() === city.toLowerCase()))
+  return dispatch => {
+    RestfulAdapter.indexFetch("routes")
+    .then(res => {
+      debugger
+      let filteredresults = res.filter(route => route.city.toLowerCase() === city.toLowerCase())
+// COME BACK TO THIS I DONT THINK ITS WORKING!!!!!
+      dispatch({type: "SEARCH_CITY", payload: {city: city, routes: filteredresults}})
+    })
+  }
 }
 
 export function getRouteForRoutePage(route){

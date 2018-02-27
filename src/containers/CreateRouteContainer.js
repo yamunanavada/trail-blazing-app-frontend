@@ -13,7 +13,7 @@ class CreateRouteContainer extends React.Component {
   constructor(props){
     super(props)
 
-    this. state = {
+    this.state = {
         startingCity: '',
         startingCityCoords: {
           lat: 40.7128,
@@ -32,14 +32,19 @@ class CreateRouteContainer extends React.Component {
     // this should be responsible for calling the fetch to get the coordinates of the starting city and send to the reducer to change state --> need these coordinates to be passed to the map container
 
     GoogleMapAdapter.fetchStaticGoogleMaps(event.target.citysearch.value)
-    .then(res => this.setState({
-      startingCityCoords: {lat: res.results[0].geometry.location.lat, lng: res.results[0].geometry.location.lng}
-    })).then( res => this.props.updateStartingCity(this.state))
+      .then(res => this.setState({
+        ...this.state,
+        startingCityCoords: {lat: res.results[0].geometry.location.lat, lng: res.results[0].geometry.location.lng}
+        })
+      ).then(res => {
+          this.props.updateStartingCity(this.state)
+      })
   }
 
   handleCityInput = (event) => {
     event.preventDefault()
     this.setState({
+      ...this.state,
       startingCity: event.target.value
     })
   }
@@ -70,10 +75,7 @@ class CreateRouteContainer extends React.Component {
     }
     // this should call a post fetch to the backend to save this route
     RestfulAdapter.createFetch("routes", body).then(res => {
-      console.log(res)
-
       this.props.getRouteForRoutePage(res)
-      //save to store
       let id = res.id
       this.props.history.push(`/routes/${id}`)
     })
@@ -98,24 +100,17 @@ class CreateRouteContainer extends React.Component {
         <Map />
         <CreateRouteDetailsForm onInputChange={this.handleNewRouteChange} onFormSubmit={this.handleFormSubmit}/>
       </div>
-
     )
   }
  }
 
  const mapStateToProps = (state) => {
-   // debugger;
    return { startingCity: state.manageStartingCity.startingCity,
      startingCityCoords: state.manageStartingCity.startingCityCoords,
      waypoints: state.mapReducer.waypoints,
      distance: state.mapReducer.distance
    }
  }
-
- // const mapDispatchToProps = (dispatch) => {
- //
- // }
-
 
 
 export default withRouter(connect(mapStateToProps, {updateStartingCity, getRouteForRoutePage})(CreateRouteContainer))

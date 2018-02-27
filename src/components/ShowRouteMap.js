@@ -1,9 +1,9 @@
 /* global google */
 import React from "react"
-import { withScriptjs, withGoogleMap, GoogleMap, Marker, DirectionsRenderer} from 'react-google-maps'
-import { compose, withProps, lifecycle, withHandlers, withState } from "recompose"
+import { withScriptjs, withGoogleMap, GoogleMap, DirectionsRenderer} from 'react-google-maps'
+import { compose, withProps, lifecycle } from "recompose"
 import { connect } from 'react-redux'
-import { updateWaypoints, updateDistance } from '../actions'
+import { updateWaypoints} from '../actions'
 
   // withState('waypoints', 'mapReducer',[]), --> was originally addded to deal with event handlers. lets see if we get the redux to work firsst.
 
@@ -17,10 +17,8 @@ const ShowRouteMap = compose(
     withScriptjs,
     lifecycle({
       componentDidMount(){
-        console.log(this.props)
 
         if(this.props.waypoints.length > 0){
-          debugger
           const waypoints = () => {
             return this.props.waypoints.map(waypoint => ({location: new google.maps.LatLng(waypoint.lat, waypoint.lng)}))
           }
@@ -36,7 +34,7 @@ const ShowRouteMap = compose(
             travelMode: google.maps.TravelMode.WALKING,
             waypoints: middlepoints
           }, (result, status) => {
-            console.log(result)
+
             if (status === google.maps.DirectionsStatus.OK) {
               this.setState({
                 directions: result,

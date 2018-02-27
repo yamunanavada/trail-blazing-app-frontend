@@ -1,8 +1,7 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
 import './App.css';
 import NavBar from './components/NavBar'
-import { Route, Switch, Redirect } from 'react-router-dom'
+import { Route, Switch } from 'react-router-dom'
 import SignIn from "./components/SignIn"
 import CreateRouteContainer from "./containers/CreateRouteContainer"
 import TrailBlazingContainer from './containers/TrailBlazingContainer'

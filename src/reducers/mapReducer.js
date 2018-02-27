@@ -9,8 +9,6 @@ export default function mapReducer(
           waypoints: [...state.waypoints, action.payload]
         }
       case "ADD_DISTANCE":
-        console.log("previousState", state.distance)
-        console.log("current payload", action.payload)
         return state = {
           ...state,
           distance: state.distance + action.payload

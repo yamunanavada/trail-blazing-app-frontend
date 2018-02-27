@@ -8,11 +8,12 @@ export default function manageStartingCity(
   }, action){
     switch (action.type){
       case "ADD_CITY":
-        return Object.assign({}, state, {startingCity: action.startingCity, startingCityCoords: {
-          lat: action.payload.startingCityCoords.lat,
-          lng: action.payload.startingCityCoords.lng
-        }})
-
+        return state = {...state,
+          startingCity: action.payload.startingCity,
+          startingCityCoords: {
+            lat: action.payload.startingCityCoords.lat,
+            lng: action.payload.startingCityCoords.lng
+        }}
       default:
         return state
     }

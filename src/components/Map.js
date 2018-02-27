@@ -1,11 +1,9 @@
 /* global google */
 import React from "react"
-import { withScriptjs, withGoogleMap, GoogleMap, Marker, DirectionsRenderer} from 'react-google-maps'
-import { compose, withProps, lifecycle, withHandlers, withState } from "recompose"
+import { withScriptjs, withGoogleMap, GoogleMap,  DirectionsRenderer} from 'react-google-maps'
+import { compose, withProps, lifecycle, withHandlers } from "recompose"
 import { connect } from 'react-redux'
 import { updateWaypoints, updateDistance, clearRouteFromCreateMap } from '../actions'
-
-  // withState('waypoints', 'mapReducer',[]), --> was originally addded to deal with event handlers. lets see if we get the redux to work firsst.
 
 const Map = compose(
     withProps({
@@ -17,11 +15,9 @@ const Map = compose(
     withScriptjs,
     withHandlers({
       handleClick: props => event => {
-        console.log(event)
         let newLat = event.latLng.lat()
         let newLng = event.latLng.lng()
         props.updateWaypoints({lat: newLat, lng: newLng})
-        console.log("this is props.waypoints", props.waypoints)
       }
     }),
     lifecycle({
@@ -29,7 +25,6 @@ const Map = compose(
 
       componentDidMount() {
         this.props.clearRouteFromCreateMap()
-
       },
       shouldComponentUpdate(nextProps){
         // console.log(nextProps)
@@ -48,10 +43,8 @@ const Map = compose(
           travelMode: google.maps.TravelMode.WALKING,
           waypoints: middlepoints
         }, (result, status) => {
-          console.log(result)
           if (status === google.maps.DirectionsStatus.OK) {
             // add a dispatch action here
-            console.log(result.routes[0].legs[result.routes[0].legs.length-1].distance.value)
             nextProps.updateDistance(result.routes[0].legs[result.routes[0].legs.length-1].distance.value)
             this.setState({
               directions: result,

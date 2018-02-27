@@ -10,7 +10,7 @@ function headers() {
 
 export class RestfulAdapter {
   static indexFetch(route) {
-    return fetch(`${baseUrl}/${route}`, getRequest()).then(responseHandler());
+    return fetch(`${baseUrl}/${route}`, getRequest()).then(responseHandler);
   }
   static showFetch(route, id) {
     return fetch(`${baseUrl}/${route}/${id}`, getRequest()).then(

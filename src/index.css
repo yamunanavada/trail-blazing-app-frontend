@@ -83,7 +83,7 @@ li a:hover {
    grid-row-end: 7;
    border: 1px solid black;
    text-align: center;
-   /* height: 40vmin; */
+   color: white;
    display: inline-block;
    background-color: #0585D0;
    box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19) !important
@@ -120,7 +120,7 @@ li a:hover {
 }
 
 .map-container {
-  grid-column-start: 1;
+  grid-column-start: 2;
    grid-column-end: 5;
    grid-row-start: 3;
    grid-row-end: 7;
@@ -128,21 +128,19 @@ li a:hover {
    text-align: center;
    /* height: 40vmin; */
    display: inline-block;
-   margin: 10px;
    background-color: #0585D0;
    box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19) !important
 }
 
 .create-route-form {
   grid-column-start: 5;
-  grid-column-end: 8;
+  grid-column-end: 6;
   grid-row-start: 3;
   grid-row-end: 7;
   border: 1px solid black;
   text-align: center;
   /* height: 40vmin; */
   display: inline-block;
-  margin: 10px;
   background-color: white;
   box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19) !important
 }
@@ -198,10 +196,10 @@ li a:hover {
 }
 
 .search-form {
-  grid-column-start: 3;
-  grid-column-end: 5;
-  grid-row-start: 3;
-  grid-row-end: 5;
+  grid-column-start: 2;
+  grid-column-end: 4;
+  grid-row-start: 2;
+  grid-row-end: 3;
   text-align: center;
   background-color: #0585D0;
   box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19) !important
@@ -209,7 +207,22 @@ li a:hover {
 
 .route-card {
   border: 1px solid #ccc;
+  opacity: 0.5;
   box-shadow: 2px 2px 6px 0px  rgba(0,0,0,0.3);
+}
+
+.route-card:hover {
+  opacity: 0.8;
+  box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
+}
+
+
+.route-card-container {
+  grid-column-start: 4;
+  grid-column-end: 6;
+  grid-row: auto;
+  background-color: #0585D0;
+  box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19) !important
 }
 
 input[type=text], select {
