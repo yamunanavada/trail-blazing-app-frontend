@@ -3,7 +3,7 @@ import React from "react"
 import { withScriptjs, withGoogleMap, GoogleMap, Marker, DirectionsRenderer} from 'react-google-maps'
 import { compose, withProps, lifecycle, withHandlers, withState } from "recompose"
 import { connect } from 'react-redux'
-import { updateWaypoints, updateDistance } from '../actions'
+import { updateWaypoints, updateDistance, clearRouteFromCreateMap } from '../actions'
 
   // withState('waypoints', 'mapReducer',[]), --> was originally addded to deal with event handlers. lets see if we get the redux to work firsst.
 
@@ -25,6 +25,12 @@ const Map = compose(
       }
     }),
     lifecycle({
+
+
+      componentDidMount() {
+        this.props.clearRouteFromCreateMap()
+
+      },
       shouldComponentUpdate(nextProps){
         // console.log(nextProps)
         // First convert the waypoints into google maps latlng objects
@@ -74,4 +80,4 @@ const mapStateToProps = (state) => {
     distance: state.mapReducer.distance}
 }
 
-export default connect(mapStateToProps, {updateWaypoints, updateDistance})(Map)
+export default connect(mapStateToProps, {updateWaypoints, updateDistance, clearRouteFromCreateMap})(Map)

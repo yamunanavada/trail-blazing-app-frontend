@@ -21,6 +21,17 @@ export function getRoutesFromSearch(city){
   .then(res => res.filter(route => route.city.toLowerCase() === city.toLowerCase()))
 }
 
+export function getRouteForRoutePage(route){
+  return { type: "ADD_ROUTE", payload: route }
+}
+
+export function convertWaypoints(markers){
+  return { type: "CONVERT_WAYPOINTS", payload: markers}
+}
+
+export function clearRouteFromCreateMap(){
+  return {type: "CLEAR_ALL"}
+}
 
 // export function fetchHobsWithJobs() {
 //   //using thunk, we return are returning a function here instead of

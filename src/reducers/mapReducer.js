@@ -15,7 +15,10 @@ export default function mapReducer(
           ...state,
           distance: state.distance + action.payload
         }
-
+      case "CLEAR_ALL":
+        return state = {
+          waypoints: [], distance: 0
+        }
       default:
         return state;
     }

@@ -3,7 +3,7 @@ import Map from "../components/Map"
 import CreateRouteDetailsForm from "../components/CreateRouteDetailsForm"
 import { GoogleMapAdapter } from "../adapters"
 import { connect} from 'react-redux'
-import { updateStartingCity } from '../actions'
+import { updateStartingCity, getRouteForRoutePage } from '../actions'
 import { RestfulAdapter } from '../adapters'
 import { withRouter } from 'react-router-dom'
 
@@ -69,19 +69,19 @@ class CreateRouteContainer extends React.Component {
       distance: this.props.distance,
     }
     // this should call a post fetch to the backend to save this route
-    RestfulAdapter.createFetch("routes", body).then({
+    RestfulAdapter.createFetch("routes", body).then(res => {
+      console.log(res)
+
+      this.props.getRouteForRoutePage(res)
       //save to store
-      // history.push('/routes')
+      let id = res.id
+      this.props.history.push(`/routes/${id}`)
     })
     // may need to add a fetch to create a saved_route
     // Needs to redirect to Route Page
-
-
   }
 
   render() {
-    console.log("props", this.props)
-    console.log("state", this.state)
     return (
       <div className="create-container">
         <div className="page-title-bar" >
@@ -118,4 +118,4 @@ class CreateRouteContainer extends React.Component {
 
 
 
-export default withRouter(connect(mapStateToProps, {updateStartingCity})(CreateRouteContainer))
+export default withRouter(connect(mapStateToProps, {updateStartingCity, getRouteForRoutePage})(CreateRouteContainer))
