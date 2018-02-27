@@ -1,6 +1,6 @@
 // //This is just one example of an adapter class for containing our fetches
-// import { RestfulAdapter } from "../adapters";
-//
+import { RestfulAdapter } from "../adapters";
+
 
 export function updateStartingCity(citydata) {
   return { type: "ADD_CITY", payload: citydata }
@@ -14,6 +14,11 @@ export function updateWaypoints(waypoint){
 
 export function updateDistance(distance){
   return { type: "ADD_DISTANCE", payload: distance }
+}
+
+export function getRoutesFromSearch(city){
+  RestfulAdapter.indexFetch("routes")
+  .then(res => res.filter(route => route.city.toLowerCase() === city.toLowerCase()))
 }
 
 

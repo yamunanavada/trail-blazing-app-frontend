@@ -57,6 +57,8 @@ class CreateRouteContainer extends React.Component {
   handleFormSubmit = (event) => {
     event.preventDefault()
 
+    // let stringedMarkers = this.props.waypoints.map(point => JSON.stringify(point)).toString
+
     let body = {
       name: this.state.newRouteDetails.route_name,
       city: this.props.startingCity,
@@ -68,7 +70,10 @@ class CreateRouteContainer extends React.Component {
     debugger
 
     // this should call a post fetch to the backend to save this route
-    RestfulAdapter.createFetch("routes", body)
+    RestfulAdapter.createFetch("routes", body).then(res => console.log(res))
+    // may need to add a fetch to create a saved_route
+    // Needs to redirect to Route Page
+
 
   }
 
@@ -79,12 +84,15 @@ class CreateRouteContainer extends React.Component {
       <div className="create-container">
         <div className="page-title-bar" >
           <h1>Create a Route</h1>
-            <h3>Search for a City</h3>
-            <form onSubmit={this.handleCitySubmit}>
-              <input type="text" id="citysearch" name="citysearch" placeholder="City..." onChange={this.handleCityInput}/><br></br>
-              <input type="submit" value="Submit"/>
-            </form>
         </div>
+        <div className="search-city-form">
+          <h3>Search for a City</h3>
+          <form onSubmit={this.handleCitySubmit}>
+            <input type="text" id="citysearch" name="citysearch" placeholder="City..." onChange={this.handleCityInput}/><br></br>
+            <input type="submit" value="Submit"/>
+          </form>
+        </div>
+
         <Map />
         <CreateRouteDetailsForm onInputChange={this.handleNewRouteChange} onFormSubmit={this.handleFormSubmit}/>
       </div>

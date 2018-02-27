@@ -1,7 +1,7 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: sans-serif;
+  font-family: 'Nanum Brush Script', cursive;
   background-color: #333
 }
 
@@ -14,6 +14,7 @@ body {
 }
 
 .navbar-li {
+    font-family: 'Nanum Brush Script', cursive;
     float: right;
 }
 
@@ -38,7 +39,7 @@ li a:hover {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   grid-gap: 10px;
-  grid-template-rows: repeat(5, 1fr);
+  grid-template-rows: repeat(6, 1fr);
   height: 800px;
   width: auto
 }
@@ -56,7 +57,7 @@ li a:hover {
   display: grid;
   grid-template-columns: repeat(6, 1fr);
   grid-gap: 10px;
-  grid-template-rows: repeat(5, 1fr);
+  grid-template-rows: repeat(6, 1fr);
   height: 800px;
   width: auto;
   text-align: center
@@ -64,7 +65,8 @@ li a:hover {
 
 .signin-component > h1 {
   color: white;
-  font-family: 'Pacifico', cursive;
+  font-family: 'Nanum Brush Script', cursive;
+  font-size: 200%;
   grid-column-start: 3;
   grid-column-end: 5;
   grid-row-start: 1;
@@ -83,8 +85,8 @@ li a:hover {
 .map-container {
   grid-column-start: 1;
    grid-column-end: 5;
-   grid-row-start: 2;
-   grid-row-end: 6;
+   grid-row-start: 3;
+   grid-row-end: 7;
    border: 1px solid black;
    text-align: center;
    /* height: 40vmin; */
@@ -97,8 +99,8 @@ li a:hover {
 .create-route-form {
   grid-column-start: 5;
   grid-column-end: 8;
-  grid-row-start: 2;
-  grid-row-end: 6;
+  grid-row-start: 3;
+  grid-row-end: 7;
   border: 1px solid black;
   text-align: center;
   /* height: 40vmin; */
@@ -144,7 +146,33 @@ li a:hover {
   margin-top: 50px;
   color: white;
   opacity: 1.0;
-  font-family: 'Pacifico', cursive;
+  font-family: 'Nanum Brush Script', cursive;
+}
+
+.search-city-form {
+  grid-column-start: 3;
+  grid-column-end: 5;
+  grid-row-start: 2;
+  grid-row-end: 3;
+  text-align: center;
+  background-color: #0585D0;
+  color: white;
+  box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19) !important
+}
+
+.search-form {
+  grid-column-start: 3;
+  grid-column-end: 5;
+  grid-row-start: 3;
+  grid-row-end: 5;
+  text-align: center;
+  background-color: #0585D0;
+  box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19) !important
+}
+
+.route-card {
+  border: 1px solid #ccc;
+  box-shadow: 2px 2px 6px 0px  rgba(0,0,0,0.3);
 }
 
 input[type=text], select {
@@ -172,6 +200,7 @@ input[type=submit] {
 input[type=submit]:hover {
     background-color: #45a049;
 }
+
 
 .video-background {
   background: #000;
