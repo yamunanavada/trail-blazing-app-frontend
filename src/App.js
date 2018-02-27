@@ -8,6 +8,7 @@ import CreateRouteContainer from "./containers/CreateRouteContainer"
 import TrailBlazingContainer from './containers/TrailBlazingContainer'
 import FindRoutesContainer from "./containers/FindRoutesContainer"
 import YourProfileContainer from "./containers/YourProfileContainer"
+import RoutePage from "./components/RoutePage"
 
 class App extends Component {
   render() {
@@ -20,6 +21,7 @@ class App extends Component {
           <Route exact path="/yourprofile" component={YourProfileContainer} />
           <Route exact path="/findroutes" component={FindRoutesContainer} />
           <Route exact path="/login" component={SignIn} />
+          <Route path="/routes/:id" component={RoutePage} />
         </Switch>
       </div>
 

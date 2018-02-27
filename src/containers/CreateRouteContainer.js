@@ -5,6 +5,7 @@ import { GoogleMapAdapter } from "../adapters"
 import { connect} from 'react-redux'
 import { updateStartingCity } from '../actions'
 import { RestfulAdapter } from '../adapters'
+import { withRouter } from 'react-router-dom'
 
 
 class CreateRouteContainer extends React.Component {
@@ -57,20 +58,21 @@ class CreateRouteContainer extends React.Component {
   handleFormSubmit = (event) => {
     event.preventDefault()
 
-    // let stringedMarkers = this.props.waypoints.map(point => JSON.stringify(point)).toString
+    let stringedMarkers = this.props.waypoints.map(point => JSON.stringify(point)).toString()
 
     let body = {
       name: this.state.newRouteDetails.route_name,
       city: this.props.startingCity,
       description: this.state.newRouteDetails.route_description,
-      markers: this.props.waypoints,
+      markers: stringedMarkers,
       difficulty: this.state.newRouteDetails.difficulty,
       distance: this.props.distance,
     }
-    debugger
-
     // this should call a post fetch to the backend to save this route
-    RestfulAdapter.createFetch("routes", body).then(res => console.log(res))
+    RestfulAdapter.createFetch("routes", body).then({
+      //save to store
+      // history.push('/routes')
+    })
     // may need to add a fetch to create a saved_route
     // Needs to redirect to Route Page
 
@@ -116,4 +118,4 @@ class CreateRouteContainer extends React.Component {
 
 
 
-export default connect(mapStateToProps, {updateStartingCity})(CreateRouteContainer)
+export default withRouter(connect(mapStateToProps, {updateStartingCity})(CreateRouteContainer))

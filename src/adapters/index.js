@@ -10,17 +10,16 @@ function headers() {
 
 export class RestfulAdapter {
   static indexFetch(route) {
-    return fetch(`${baseUrl}/${route}`, getRequest()).then(responseHandler);
+    return fetch(`${baseUrl}/${route}`, getRequest()).then(responseHandler());
   }
   static showFetch(route, id) {
     return fetch(`${baseUrl}/${route}/${id}`, getRequest()).then(
-      responseHandler
+     responseHandler
     );
   }
   static createFetch(route, body) {
-    return fetch(`${baseUrl}/${route}`, postRequest(body)).then(
-      responseHandler
-    );
+    return fetch(`${baseUrl}/${route}`, postRequest(body))
+    .then(responseHandler)
   }
   static editFetch(route, id, body) {
     return fetch(`${baseUrl}/${route}/${id}`, patchRequest(body)).then(
@@ -62,13 +61,11 @@ function postRequest(body) {
 //this is a very basic error handling function.  API responses come with a key,
 //response.ok, which will be true if the status is below 400 and false if above.
 function responseHandler(response) {
-  return response => {
     if (response.ok) {
       return response.json();
     } else {
       console.log("ERROR", response.json());
     }
-  };
 }
 
 
