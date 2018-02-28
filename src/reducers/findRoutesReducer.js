@@ -11,7 +11,11 @@ export default function findRoutesReducer(
         city: action.payload.city,
         routes: action.payload.routes
       }
-
+    case "CLEAR_SEARCH":
+      return  state = {
+          city: "",
+          routes: []
+        }
     default:
       return state
   }

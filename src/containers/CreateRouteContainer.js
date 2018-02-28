@@ -57,17 +57,21 @@ class CreateRouteContainer extends React.Component {
         ...this.state.newRouteDetails,
         [event.target.name]: event.target.value
       }
-    })
+    }, console.log(this.state.newRouteDetails))
   }
 
   handleFormSubmit = (event) => {
     event.preventDefault()
 
-    let stringedMarkers = this.props.waypoints.map(point => JSON.stringify(point)).toString()
+    let stringedMarkers = this.props.waypoints.map(point => `${point.lat}^${point.lng}`).join(",")
+    console.log(stringedMarkers)
+
 
     let body = {
       name: this.state.newRouteDetails.route_name,
       city: this.props.startingCity,
+      startingcityLat: this.props.startingCityCoords.lat,
+      startingcityLng: this.props.startingCityCoords.lng,
       description: this.state.newRouteDetails.route_description,
       markers: stringedMarkers,
       difficulty: this.state.newRouteDetails.difficulty,
@@ -92,7 +96,7 @@ class CreateRouteContainer extends React.Component {
         <div className="search-city-form">
           <h3>Search for a City</h3>
           <form onSubmit={this.handleCitySubmit}>
-            <input type="text" id="citysearch" name="citysearch" placeholder="City..." onChange={this.handleCityInput}/><br></br>
+            <input type="text" id="citysearch" name="citysearch" placeholder="City..." onChange={this.handleCityInput}/>
             <input type="submit" value="Submit"/>
           </form>
         </div>

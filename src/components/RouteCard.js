@@ -1,10 +1,21 @@
 import React from 'react'
+import MiniMap from './MiniMap'
 
-const RouteCard = () => {
+const RouteCard = (props) => {
+  console.log(props)
+
 
   return (
+
     <div className="route-card">
-      Hey I'm a Route Card (when a route card is clicked it should redirect to route details which is a page specific to the route)
+      <MiniMap markers={props.route.markers} lat={props.route.startingcityLat} lng={props.route.startingcityLng}/>
+      <div className="route-card-description-container">
+        <h1>{props.route.name}</h1>
+        <p>Description: {props.route.description}</p>
+        <p>Distance: {props.route.distance} meters</p>
+        <p>Difficulty: {props.route.difficulty}</p>
+      </div>
+
     </div>
   )
 

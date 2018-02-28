@@ -19,9 +19,7 @@ export function getRoutesFromSearch(city){
   return dispatch => {
     RestfulAdapter.indexFetch("routes")
     .then(res => {
-      debugger
       let filteredresults = res.filter(route => route.city.toLowerCase() === city.toLowerCase())
-// COME BACK TO THIS I DONT THINK ITS WORKING!!!!!
       dispatch({type: "SEARCH_CITY", payload: {city: city, routes: filteredresults}})
     })
   }
@@ -37,6 +35,10 @@ export function convertWaypoints(markers){
 
 export function clearRouteFromCreateMap(){
   return {type: "CLEAR_ALL"}
+}
+
+export function clearRoutesFromSearch(){
+  return {type: "CLEAR_SEARCH"}
 }
 
 // export function fetchHobsWithJobs() {

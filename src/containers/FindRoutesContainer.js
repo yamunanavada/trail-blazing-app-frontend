@@ -1,7 +1,7 @@
 import React from "react";
 import { connect } from "react-redux"
 import CitySearch from '../components/CitySearch'
-import { getRoutesFromSearch } from '../actions'
+import { getRoutesFromSearch, clearRoutesFromSearch } from '../actions'
 import RouteCard from "../components/RouteCard"
 
 
@@ -33,6 +33,11 @@ class FindRoutesContainer extends React.Component {
     }
   }
 
+  componentDidMount(){
+    this.props.clearRoutesFromSearch()
+
+  }
+
 
   render() {
     return (
@@ -42,9 +47,8 @@ class FindRoutesContainer extends React.Component {
           <h1>Find a Route</h1>
         </div>
         <CitySearch onCitySubmit={this.handleCitySearchSubmit} onCityChange={this.handleCityChange}/>
-        <div className="route-card-container">
+
           {this.createRouteCards()}
-        </div>
 
       </div>
     )
@@ -60,4 +64,4 @@ const mapStateToProps = (state) => {
 }
 
 
-export default connect(mapStateToProps, {getRoutesFromSearch})(FindRoutesContainer)
+export default connect(mapStateToProps, {getRoutesFromSearch, clearRoutesFromSearch})(FindRoutesContainer)

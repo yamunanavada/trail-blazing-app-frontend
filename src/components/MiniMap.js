@@ -2,24 +2,29 @@
 import React from "react"
 import { withScriptjs, withGoogleMap, GoogleMap, DirectionsRenderer} from 'react-google-maps'
 import { compose, withProps, lifecycle } from "recompose"
-import { connect } from 'react-redux'
-import { updateWaypoints} from '../actions'
+// import { connect } from 'react-redux'
 
 
-const ShowRouteMap = compose(
+const MiniMap = compose(
     withProps({
       googleMapURL: "https://maps.googleapis.com/maps/api/js?key=AIzaSyC4R6AN7SmujjPUIGKdyao2Kqitzr1kiRg&v=3.exp&libraries=geometry,drawing,places",
       loadingElement: <div style={{ height: `100%` }} />,
-      containerElement: <div className="route-page-map-container" />,
+      containerElement: <div className="route-card-map-container" />,
       mapElement: <div style={{ height: `100%` }} />,
     }),
     withScriptjs,
     lifecycle({
       componentDidMount(){
+        let revertMarkers = this.props.markers.split(",").map(point => {
+          let obj = {}
+          obj.lat = parseFloat(point.split("^")[0])
+          obj.lng = parseFloat(point.split("^")[1])
+          return obj
+        })
 
-        if(this.props.waypoints.length > 0){
+        if(revertMarkers.length > 0){
           const waypoints = () => {
-            return this.props.waypoints.map(waypoint => ({location: new google.maps.LatLng(waypoint.lat, waypoint.lng)}))
+            return revertMarkers.map(waypoint => ({location: new google.maps.LatLng(waypoint.lat, waypoint.lng)}))
           }
           let waypointsGoogle = waypoints()
 
@@ -48,18 +53,11 @@ const ShowRouteMap = compose(
     withGoogleMap
   )((props) =>
     <GoogleMap
-      defaultZoom={10}
-      center={{ lat: props.startingCityCoords.lat, lng: props.startingCityCoords.lng}}>
+      defaultZoom={13}
+      center={{ lat: props.lat, lng: props.lng}}>
       {props.directions && <DirectionsRenderer directions={props.directions} />}
     </GoogleMap>
   )
 
-const mapStateToProps = (state) => {
-  return {
-    startingCityCoords: state.manageStartingCity.startingCityCoords,
-    route: state.routeReducer.route,
-    waypoints: state.mapReducer.waypoints
-  }
-}
 
-export default connect(mapStateToProps, {updateWaypoints})(ShowRouteMap)
+export default MiniMap

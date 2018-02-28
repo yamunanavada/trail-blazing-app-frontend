@@ -18,7 +18,6 @@ const RoutePage = (props) => {
 
     <div className="route-page-container">
       <div className="page-title-bar">
-      
         <h1> {props.route.name} </h1>
         <h2> {props.route.city} </h2>
       </div>
@@ -26,6 +25,7 @@ const RoutePage = (props) => {
       <div className="route-page-description-container">
         <p><b>Description: </b> {props.route.description}</p>
         <p><b>Distance: </b> {props.route.distance} meters</p>
+        <p><b>Difficulty Level: </b> {props.route.difficulty}</p>
       </div>
     </div>
 
