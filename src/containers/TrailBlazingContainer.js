@@ -3,11 +3,18 @@ import React from "react";
 
 class TrailBlazingContainer extends React.Component {
 
+// WILL HAVE A BUTTON FOR SIGNING IN OR SIGNING UP
 
   render() {
     return (
-      <div className="trail-container">
-        I need this to be a landing page but i dont know what to do with it yet.
+      <div className="signin-component">
+        <h1> Trail Blazin </h1>
+        <div class="video-background">
+          <div class="video-foreground">
+              <iframe src="https://youtube.com/embed/gKmO0RjeE1g?autoplay=1&loop=1&playlist=gKmO0RjeE1g" frameborder="0" webkitallowfullscreen allowfullscreen loop="true"></iframe>
+          </div>
+        </div>
+
       </div>
 
     )

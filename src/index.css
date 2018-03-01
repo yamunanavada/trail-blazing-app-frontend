@@ -163,6 +163,26 @@ li a:hover {
   opacity: 0.8;
 }
 
+.signup-form {
+  grid-column-start: 3;
+  grid-column-end: 5;
+  grid-row-start: 2;
+  grid-row-end: 6;
+  opacity: 0.5;
+  border: 1px solid black;
+  text-align: center;
+  /* height: 40vmin; */
+  display: inline-block;
+  margin: 10px;
+  background-color: black;
+  color: white;
+  box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19) !important
+}
+
+.signup-form:hover {
+  opacity: 0.8;
+}
+
 .page-title-bar {
   grid-column-start: 2;
   grid-column-end: 6;
@@ -264,6 +284,16 @@ input[type=text], select {
 }
 
 input[type=password], select {
+    width: 60%;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type=date], select {
     width: 60%;
     padding: 12px 20px;
     margin: 8px 0;

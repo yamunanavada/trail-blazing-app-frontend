@@ -10,6 +10,7 @@ import YourProfileContainer from "./containers/YourProfileContainer"
 import RoutePage from "./components/RoutePage"
 import { getLoggedInUser } from "./actions"
 import { connect } from 'react-redux'
+import SignUp from './components/SignUp'
 
 class App extends Component {
 
@@ -37,6 +38,7 @@ class App extends Component {
           <Route exact path="/findroutes" component={FindRoutesContainer} />
           <Route exact path="/login" component={SignIn} />
           <Route path="/routes/:id" component={RoutePage} />
+          <Route exact path="/signup" component={SignUp} />
         </Switch>
       </div>
 

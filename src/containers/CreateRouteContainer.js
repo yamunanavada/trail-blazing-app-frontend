@@ -76,9 +76,7 @@ class CreateRouteContainer extends React.Component {
       distance: this.props.distance
     }
     // this should call a post fetch to the backend to save this route
-    debugger
     RestfulAdapter.createFetch("routes", body).then(res => {
-      console.log("res from createFetch fro route", res)
       this.props.getRouteForRoutePage(res)
       let id = res.id
       this.props.history.push(`/routes/${id}`)

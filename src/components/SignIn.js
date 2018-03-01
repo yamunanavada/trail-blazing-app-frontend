@@ -1,6 +1,8 @@
 import React from 'react'
 import { connect } from 'react-redux'
 import { loginUser } from '../actions'
+import { Link, withRouter } from 'react-router-dom'
+
 
 class SignIn extends React.Component {
 
@@ -24,6 +26,7 @@ class SignIn extends React.Component {
   handleLoginSubmit = (event) => {
     event.preventDefault()
     this.props.loginUser(this.state.username, this.state.password)
+    this.props.history.push(`/findroutes`)
   }
 
 
@@ -45,6 +48,7 @@ class SignIn extends React.Component {
           <input type="password" id="password" name="password" placeholder="Password..." onChange={this.handlePasswordChange}/><br></br>
           <input type="submit" value="Submit"/>
         </form>
+        <Link to="/signup">Sign Up</Link>
       </div>
     </div>)
   }
@@ -52,4 +56,4 @@ class SignIn extends React.Component {
 
 }
 
-export default connect(null, {loginUser})(SignIn)
+export default withRouter(connect(null, {loginUser})(SignIn))

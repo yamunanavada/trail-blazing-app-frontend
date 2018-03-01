@@ -26,7 +26,6 @@ export function getRoutesFromSearch(city){
 }
 
 export function getRouteForRoutePage(route){
-  debugger
   return { type: "ADD_ROUTE", payload: route }
 }
 
@@ -88,4 +87,8 @@ export function setCurrentUser(userData) {
     type: "SET_CURRENT_USER",
     payload: userData
   }
+}
+
+export function clearCurrentUser() {
+  return {type: "CLEAR_CURRENT_USER"}
 }
