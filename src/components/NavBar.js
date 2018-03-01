@@ -23,7 +23,7 @@ const NavBar = (props) => {
               <li className="navbar-li"><Link to="/findroutes">Find A Route</Link></li>
           </div>
            :
-           <div> 
+           <div>
                <li className="navbar-li"><Link to="/createroute">Create A Route</Link></li>
                <li className="navbar-li"><Link to="/findroutes">Find A Route</Link></li>
            </div>

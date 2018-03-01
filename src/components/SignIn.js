@@ -36,7 +36,7 @@ class SignIn extends React.Component {
       <h1> Trail Blazin </h1>
       <div class="video-background">
         <div class="video-foreground">
-            <iframe src="https://youtube.com/embed/gKmO0RjeE1g?autoplay=1&loop=1&playlist=gKmO0RjeE1g" frameborder="0" webkitallowfullscreen allowfullscreen loop="true"></iframe>
+            <iframe height="100%" width="100%" src="https://youtube.com/embed/gKmO0RjeE1g?autoplay=1&loop=1&playlist=gKmO0RjeE1g" frameborder="0" allowfullscreen loop="true"></iframe>
         </div>
       </div>
       <div className="signin-form">

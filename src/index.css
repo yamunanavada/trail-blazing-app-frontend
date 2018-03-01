@@ -1,7 +1,7 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Nanum Brush Script', cursive;
+  font-family: 'Open Sans', sans-serif;
   background-color: #333
 }
 
@@ -14,8 +14,15 @@ body {
 }
 
 .navbar-li {
-    font-family: 'Nanum Brush Script', cursive;
+    font-family: 'Open Sans', sans-serif;
     float: right;
+}
+.navbar-li <h1 {
+    font-family: 'Nanum Brush Script', cursive;
+    float: left;
+    color: white;
+    padding: 0px;
+    margin: 0px;
 }
 
 li a {
@@ -100,13 +107,50 @@ li a:hover {
 
 .signin-component > h1 {
   color: white;
-  font-family: 'Nanum Brush Script', cursive;
+  font-family: 'Open Sans', sans-serif;
   font-size: 200%;
   grid-column-start: 3;
   grid-column-end: 5;
   grid-row-start: 1;
   grid-row-end: 2
 }
+
+.landing-page-component {
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  grid-gap: 10px;
+  grid-template-rows: repeat(6, 1fr);
+  height: 800px;
+  width: auto;
+  text-align: center;
+}
+
+.landing-page-title-box {
+  grid-column-start: 2;
+   grid-column-end: 6;
+   grid-row-start: 2;
+   grid-row-end: 5;
+   background-color: black;
+   opacity: 0.5;
+   color: white;
+   text-align: center;
+   vertical-align: center;
+   padding: 80px;
+}
+
+#h1-small-landing {
+  font-size: 30px;
+  padding: 0px;
+  margin: 0px;
+}
+
+#h1-large-landing {
+  font-size: 100px;
+  padding: 0px;
+  margin: 0px;
+}
+
+
 
 .profile-container {
   display: grid;
@@ -184,14 +228,16 @@ li a:hover {
 }
 
 .page-title-bar {
-  grid-column-start: 2;
-  grid-column-end: 6;
+  grid-column: 1 / span 6;
   grid-row-start: 1;
   grid-row-end: 2;
   border: 1px solid black;
   text-align: center;
   display: inline-block;
-  background-color: #0585D0;
+  background-image: url("cropped-runner-header.jpg");
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-color: #cccc;
   box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19) !important
 }
 
@@ -199,7 +245,7 @@ li a:hover {
   margin-top: 50px;
   color: white;
   opacity: 1.0;
-  font-family: 'Nanum Brush Script', cursive;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .search-city-form {
@@ -209,6 +255,7 @@ li a:hover {
   grid-row-end: 3;
   text-align: center;
   background-color: #0585D0;
+  opacity: 0.8;
   color: white;
   box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19) !important
 }
@@ -220,6 +267,7 @@ li a:hover {
   grid-row-end: 3;
   text-align: center;
   background-color: #0585D0;
+  opacity: 0.8;
   box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19) !important
 }
 
@@ -275,6 +323,7 @@ li a:hover {
 
 input[type=text], select {
     width: 60%;
+    font-family: 'Open Sans', sans-serif;
     padding: 12px 20px;
     margin: 8px 0;
     display: inline-block;
@@ -285,6 +334,7 @@ input[type=text], select {
 
 input[type=password], select {
     width: 60%;
+    font-family: 'Open Sans', sans-serif;
     padding: 12px 20px;
     margin: 8px 0;
     display: inline-block;
@@ -296,6 +346,7 @@ input[type=password], select {
 input[type=date], select {
     width: 60%;
     padding: 12px 20px;
+    font-family: 'Open Sans', sans-serif;
     margin: 8px 0;
     display: inline-block;
     border: 1px solid #ccc;
@@ -307,6 +358,7 @@ input[type=date], select {
 input[type=submit] {
     width: 80%;
     background-color: #4CAF50;
+    font-family: 'Open Sans', sans-serif;
     color: white;
     padding: 14px 20px;
     margin: 8px 0;
@@ -322,7 +374,7 @@ input[type=submit]:hover {
 
 .video-background {
   background: #000;
-  position: fixed;
+  position: absolute;
   top: 0; right: 0; bottom: 0; left: 0;
   z-index: -99;
 }
