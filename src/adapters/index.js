@@ -1,10 +1,12 @@
 // //Adapters allow us to abstract out repetitive code, such as the base url and headers
 const baseUrl = `http://localhost:3001/api/v1`;
 
+const token = localStorage.getItem('jwt')
 function headers() {
   return {
     "Content-Type": "application/json",
-    Accept: "application/json"
+    Accept: "application/json",
+    Authorization: localStorage.getItem('jwt')
   };
 }
 
@@ -66,6 +68,23 @@ function responseHandler(response) {
     } else {
       console.log("ERROR", response.json());
     }
+}
+
+
+export class LoggedIn {
+  static getLoggedInUser = () => {
+    return fetch(`${baseUrl}/get_current_user`, {
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        Authorization: localStorage.getItem('jwt')
+      }
+    }).then(res => {
+      console.log(res.json())
+      return res.json()
+    })
+
+  }
 }
 
 

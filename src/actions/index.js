@@ -1,5 +1,5 @@
 // //This is just one example of an adapter class for containing our fetches
-import { RestfulAdapter } from "../adapters";
+import { RestfulAdapter, LoggedIn } from "../adapters";
 
 
 export function updateStartingCity(citydata) {
@@ -26,6 +26,7 @@ export function getRoutesFromSearch(city){
 }
 
 export function getRouteForRoutePage(route){
+  debugger
   return { type: "ADD_ROUTE", payload: route }
 }
 
@@ -54,3 +55,37 @@ export function clearRoutesFromSearch(){
 //     });
 //   };
 // }
+
+export function loginUser(username, password) {
+  return (dispatch) => {
+    fetch('http://localhost:3001/api/v1/login', {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+        'Accept': 'application/json'
+      },
+      body: JSON.stringify({user: { username: username, password: password}})
+    })
+    .then(response => response.json())
+    .then(userData => dispatch(setCurrentUser(userData)))
+  }
+}
+
+export function getLoggedInUser() {
+  return dispatch => {
+    // grab that function getLoggedinUser, and with the data do a dispatch(setCurrentUser(userData)), else render login page
+    LoggedIn.getLoggedInUser().then(res => {
+      console.log(res)
+      return dispatch => {
+        dispatch(setCurrentUser(res))
+      }
+    })
+  }
+}
+
+export function setCurrentUser(userData) {
+  return {
+    type: "SET_CURRENT_USER",
+    payload: userData
+  }
+}

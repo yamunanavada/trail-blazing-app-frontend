@@ -3,6 +3,7 @@ export default function routeReducer(
 ){
   switch(action.type){
     case "ADD_ROUTE":
+      debugger
       return state = {...state,
       route: action.payload};
 

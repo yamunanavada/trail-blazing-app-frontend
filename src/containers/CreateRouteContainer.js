@@ -64,8 +64,6 @@ class CreateRouteContainer extends React.Component {
     event.preventDefault()
 
     let stringedMarkers = this.props.waypoints.map(point => `${point.lat}^${point.lng}`).join(",")
-    console.log(stringedMarkers)
-
 
     let body = {
       name: this.state.newRouteDetails.route_name,
@@ -75,10 +73,12 @@ class CreateRouteContainer extends React.Component {
       description: this.state.newRouteDetails.route_description,
       markers: stringedMarkers,
       difficulty: this.state.newRouteDetails.difficulty,
-      distance: this.props.distance,
+      distance: this.props.distance
     }
     // this should call a post fetch to the backend to save this route
+    debugger
     RestfulAdapter.createFetch("routes", body).then(res => {
+      console.log("res from createFetch fro route", res)
       this.props.getRouteForRoutePage(res)
       let id = res.id
       this.props.history.push(`/routes/${id}`)
@@ -112,7 +112,8 @@ class CreateRouteContainer extends React.Component {
    return { startingCity: state.manageStartingCity.startingCity,
      startingCityCoords: state.manageStartingCity.startingCityCoords,
      waypoints: state.mapReducer.waypoints,
-     distance: state.mapReducer.distance
+     distance: state.mapReducer.distance,
+     user: state.usersReducer.user
    }
  }
 

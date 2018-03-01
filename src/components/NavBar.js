@@ -1,7 +1,14 @@
 import React from "react"
 import { Link } from 'react-router-dom'
 
-const NavBar = () => {
+const NavBar = (props) => {
+
+  // const logginIn = !!props.currentUser
+  // {loggedIn ?
+  //       <li><a onClick={props.logOut}>Logout</a></li>
+  //     :
+  //       <li><Link to="/login">Login</Link></li>
+  //     }
 
   return (
     <div>

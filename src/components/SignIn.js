@@ -1,10 +1,34 @@
 import React from 'react'
+import { connect } from 'react-redux'
+import { loginUser } from '../actions'
 
-const SignIn = () => {
+class SignIn extends React.Component {
+
+  state = {
+    username: "",
+    password: ""
+  }
+
+  handleUsernameChange = (event) => {
+    this.setState({
+      username: event.target.value
+    })
+  }
+
+  handlePasswordChange = (event) => {
+    this.setState({
+      password: event.target.value
+    })
+  }
+
+  handleLoginSubmit = (event) => {
+    event.preventDefault()
+    this.props.loginUser(this.state.username, this.state.password)
+  }
 
 
-
-  return (
+  render() {
+    return (
     <div className="signin-component">
       <h1> Trail Blazin </h1>
       <div class="video-background">
@@ -14,18 +38,18 @@ const SignIn = () => {
       </div>
       <div className="signin-form">
         <h3>Log In</h3>
-        <form>
+        <form onSubmit={this.handleLoginSubmit}>
           <label for="username">Username </label>
-          <input type="text" id="username" name="username" placeholder="Username..."/><br></br>
+          <input type="text" id="username" name="username" placeholder="Username..." onChange={this.handleUsernameChange}/><br></br>
           <label for="password">Password </label>
-          <input type="text" id="password" name="password" placeholder="Password..."/><br></br>
+          <input type="password" id="password" name="password" placeholder="Password..." onChange={this.handlePasswordChange}/><br></br>
           <input type="submit" value="Submit"/>
         </form>
       </div>
-    </div>
-  )
+    </div>)
+  }
 
 
 }
 
-export default SignIn
+export default connect(null, {loginUser})(SignIn)

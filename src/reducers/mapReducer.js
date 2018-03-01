@@ -4,17 +4,17 @@ export default function mapReducer(
   }, action){
     switch(action.type){
       case "ADD_WAYPOINT":
-        return state = {
+        return {
           ...state,
           waypoints: [...state.waypoints, action.payload]
         }
       case "ADD_DISTANCE":
-        return state = {
+        return {
           ...state,
           distance: state.distance + action.payload
         }
       case "CLEAR_ALL":
-        return state = {
+        return {
           waypoints: [], distance: 0
         }
       default:
