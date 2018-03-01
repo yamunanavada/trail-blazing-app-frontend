@@ -27,7 +27,7 @@ class SignUp extends React.Component {
   handleSignupSubmit = (event) => {
     event.preventDefault()
 
-    let body = {
+    let body = {user: {
       first_name: this.state.first_name,
       last_name: this.state.last_name,
       birthday: this.state.birthday,
@@ -35,9 +35,11 @@ class SignUp extends React.Component {
       password: this.state.password,
       password_confirmation: this.state.confirm_password
     }
+  }
 
     RestfulAdapter.createFetch("users", body)
     .then(res => {
+      console.log(res)
       this.props.loginUser(this.state.username, this.state.password)
       this.props.history.push(`/findroutes`)
     })
