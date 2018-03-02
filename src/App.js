@@ -11,6 +11,7 @@ import RoutePage from "./components/RoutePage"
 import { getLoggedInUser } from "./actions"
 import { connect } from 'react-redux'
 import SignUp from './components/SignUp'
+import authorize from './authorize'
 
 class App extends Component {
 
@@ -28,16 +29,22 @@ class App extends Component {
 
 
   render() {
+    const AuthYourProfileContainer = authorize(YourProfileContainer);
+    const AuthCreateRouteContainer = authorize(CreateRouteContainer);
+    const AuthFindRoutesContainer = authorize(FindRoutesContainer);
+    const AuthRoutePage = authorize(RoutePage);
+
     return (
+
       <div>
         <NavBar />
         <Switch>
           <Route exact path="/" component={TrailBlazingContainer} />
-          <Route exact path="/createroute" component={CreateRouteContainer} />
-          <Route exact path="/yourprofile" component={YourProfileContainer} />
-          <Route exact path="/findroutes" component={FindRoutesContainer} />
+          <Route exact path="/createroute" component={AuthCreateRouteContainer} />
+          <Route exact path="/yourprofile" component={AuthYourProfileContainer} />
+          <Route exact path="/findroutes" component={AuthFindRoutesContainer} />
           <Route exact path="/login" component={SignIn} />
-          <Route path="/routes/:id" component={RoutePage} />
+          <Route path="/routes/:id" component={AuthRoutePage} />
           <Route exact path="/signup" component={SignUp} />
         </Switch>
       </div>
@@ -45,5 +52,17 @@ class App extends Component {
     );
   }
 }
+
+
+
+
+
+
+
+
+
+
+
+
 
 export default withRouter(connect(null, {getLoggedInUser})(App));
