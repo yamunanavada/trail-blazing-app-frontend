@@ -56,7 +56,6 @@ export function clearRoutesFromSearch(){
 // }
 
 export function loginUser(username, password) {
-  debugger
   return (dispatch) => {
     fetch('http://localhost:3001/api/v1/login', {
       method: 'POST',
@@ -92,4 +91,8 @@ export function setCurrentUser(userData) {
 
 export function clearCurrentUser() {
   return {type: "CLEAR_CURRENT_USER"}
+}
+
+export function saveRoute(saveRoute){
+  return {type: "SAVE_ROUTE", payload: saveRoute}
 }

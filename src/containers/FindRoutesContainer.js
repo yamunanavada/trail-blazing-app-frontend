@@ -29,7 +29,7 @@ class FindRoutesContainer extends React.Component {
     if (this.props.routes.length === 0){
       return <p>NO ROUTES FOUND!</p>
     } else {
-      return this.props.routes.map(route => <RouteCard route={route}/>)
+      return this.props.routes.map(route => <RouteCard key={route.id} route={route}/>)
     }
   }
 
@@ -47,8 +47,9 @@ class FindRoutesContainer extends React.Component {
           <h1>Find a Route</h1>
         </div>
         <CitySearch onCitySubmit={this.handleCitySearchSubmit} onCityChange={this.handleCityChange}/>
-
-          {this.createRouteCards()}
+        <div className="route-card-container">
+        {this.createRouteCards()}
+        </div>
 
       </div>
     )

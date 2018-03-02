@@ -12,22 +12,15 @@ const NavBar = (props) => {
     <div>
       <ul className="navbar-links">
         {loggedIn ?
+          <div>
               <li className="navbar-li"><Link to="/login" onClick={props.clearCurrentUser}>Logout</Link></li>
+              <li className="navbar-li"><Link to="/yourprofile">Your Profile</Link></li>
+              <li className="navbar-li"><Link to="/createroute">Create A Route</Link></li>
+              <li className="navbar-li"><Link to="/findroutes">Find A Route</Link></li>
+            </div>
             :
               <li className="navbar-li"><Link to="/login">Login</Link></li>
             }
-        {loggedIn ?
-          <div>
-            <li className="navbar-li"><Link to="/yourprofile">Your Profile</Link></li>
-              <li className="navbar-li"><Link to="/createroute">Create A Route</Link></li>
-              <li className="navbar-li"><Link to="/findroutes">Find A Route</Link></li>
-          </div>
-           :
-           <div>
-               <li className="navbar-li"><Link to="/createroute">Create A Route</Link></li>
-               <li className="navbar-li"><Link to="/findroutes">Find A Route</Link></li>
-           </div>
-        }
 
       </ul>
 
