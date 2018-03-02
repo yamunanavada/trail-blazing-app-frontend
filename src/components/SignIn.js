@@ -26,7 +26,7 @@ class SignIn extends React.Component {
   handleLoginSubmit = (event) => {
     event.preventDefault()
     this.props.loginUser(this.state.username, this.state.password)
-    // need to load all of this users saved routes
+
     this.props.history.push(`/findroutes`)
   }
 
@@ -54,7 +54,10 @@ class SignIn extends React.Component {
     </div>)
   }
 
-
 }
 
-export default withRouter(connect(null, {loginUser})(SignIn))
+const mapStateToProps = (state) => {
+  return { user: state.usersReducer.user}
+}
+
+export default withRouter(connect(mapStateToProps, {loginUser})(SignIn))
