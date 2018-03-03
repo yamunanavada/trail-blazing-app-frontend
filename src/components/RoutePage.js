@@ -21,7 +21,7 @@ const RoutePage = (props) => {
         <h1> {props.route.name} </h1>
         <h2> {props.route.city} </h2>
       </div>
-      <ShowRouteMap waypoints={props.waypoints}/>
+      <ShowRouteMap waypoints={props.route.markers}/>
       <div className="route-page-description-container">
         <p><b>Description: </b> {props.route.description}</p>
         <p><b>Distance: </b> {props.route.distance} meters</p>

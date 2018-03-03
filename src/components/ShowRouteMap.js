@@ -16,10 +16,18 @@ const ShowRouteMap = compose(
     withScriptjs,
     lifecycle({
       componentDidMount(){
+        console.log(this.props.route.markers)
+        debugger
+        let revertMarkers = this.props.route.markers.split(",").map(point => {
+          let obj = {}
+          obj.lat = parseFloat(point.split("^")[0])
+          obj.lng = parseFloat(point.split("^")[1])
+          return obj
+        })
 
-        if(this.props.waypoints.length > 0){
+        if(revertMarkers.length > 0){
           const waypoints = () => {
-            return this.props.waypoints.map(waypoint => ({location: new google.maps.LatLng(waypoint.lat, waypoint.lng)}))
+            return revertMarkers.map(waypoint => ({location: new google.maps.LatLng(waypoint.lat, waypoint.lng)}))
           }
           let waypointsGoogle = waypoints()
 

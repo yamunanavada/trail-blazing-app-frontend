@@ -2,7 +2,8 @@ import React from 'react'
 import MiniMap from './MiniMap'
 import { RestfulAdapter } from '../adapters'
 import { connect } from 'react-redux'
-import { saveRoute } from '../actions'
+import { saveRoute, clearRouteforRoutePage, getRouteForRoutePage} from '../actions'
+import { withRouter } from 'react-router-dom'
 
 class RouteCard extends React.Component {
   // this may need a clicked state
@@ -48,13 +49,13 @@ class RouteCard extends React.Component {
 
   }
 
-  // handleHeartColor = () => {
-  //   if (!this.state.clicked){
-  //     return {"color:grey;"}
-  //   } else {
-  //     return {"color:pink;"}
-  //   }
-  // }
+  handleCardClick = (event) => {
+    event.preventDefault()
+    this.props.clearRouteforRoutePage()
+    this.props.getRouteForRoutePage(this.props.route)
+    this.props.history.push(`/routes/${this.props.route.id}`)
+
+  }
 
 
   render() {
@@ -62,7 +63,7 @@ class RouteCard extends React.Component {
     return (
       <div className="route-card">
         <MiniMap markers={this.props.route.markers} lat={this.props.route.startingcityLat} lng={this.props.route.startingcityLng}/>
-        <div className="route-card-description-container">
+        <div className="route-card-description-container" onClick={this.handleCardClick}>
           <h1>{this.props.route.name}</h1>
           <p>Distance: {this.props.route.distance} meters</p>
           <p>Difficulty: {this.props.route.difficulty}</p>
@@ -79,4 +80,4 @@ const mapStateToProps = (state) => {
   return {userId: state.usersReducer.user.id}
 }
 
-export default connect(mapStateToProps, {saveRoute})(RouteCard)
+export default withRouter(connect(mapStateToProps, {saveRoute, clearRouteforRoutePage, getRouteForRoutePage})(RouteCard))

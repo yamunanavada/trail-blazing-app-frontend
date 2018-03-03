@@ -29,6 +29,10 @@ export function getRouteForRoutePage(route){
   return { type: "ADD_ROUTE", payload: route }
 }
 
+export function clearRouteforRoutePage(){
+  return { type: "CLEAR_ROUTE"}
+}
+
 export function convertWaypoints(markers){
   return { type: "CONVERT_WAYPOINTS", payload: markers}
 }

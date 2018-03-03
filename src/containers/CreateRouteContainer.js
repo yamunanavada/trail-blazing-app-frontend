@@ -63,7 +63,7 @@ class CreateRouteContainer extends React.Component {
   handleFormSubmit = (event) => {
     event.preventDefault()
 
-    let stringedMarkers = this.props.waypoints.map(point => `${point.lat}^${point.lng}`).join(",")
+    let stringedMarkers = this.props.markers.map(point => `${point.lat}^${point.lng}`).join(",")
 
     let body = {
       name: this.state.newRouteDetails.route_name,
@@ -109,7 +109,7 @@ class CreateRouteContainer extends React.Component {
  const mapStateToProps = (state) => {
    return { startingCity: state.manageStartingCity.startingCity,
      startingCityCoords: state.manageStartingCity.startingCityCoords,
-     waypoints: state.mapReducer.waypoints,
+     markers: state.mapReducer.waypoints,
      distance: state.mapReducer.distance,
      user: state.usersReducer.user
    }
