@@ -100,3 +100,7 @@ export function clearCurrentUser() {
 export function saveRoute(saveRoute){
   return {type: "SAVE_ROUTE", payload: saveRoute}
 }
+
+export function saveRouteToUserFavorites(route){
+  return { type: "ADD_SAVED_ROUTE_TO_USER", payload: route}
+}
