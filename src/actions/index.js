@@ -104,3 +104,7 @@ export function saveRoute(saveRoute){
 export function saveRouteToUserFavorites(route){
   return { type: "ADD_SAVED_ROUTE_TO_USER", payload: route}
 }
+
+export function deleteRouteFromUserFavorites(route){
+  return { type: "DELETE_SAVED_ROUTE_FROM_USER", payload: route}
+}

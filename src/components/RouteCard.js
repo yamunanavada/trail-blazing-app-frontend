@@ -2,7 +2,7 @@ import React from 'react'
 import MiniMap from './MiniMap'
 import { RestfulAdapter } from '../adapters'
 import { connect } from 'react-redux'
-import { saveRoute, clearRouteforRoutePage, getRouteForRoutePage, saveRouteToUserFavorites} from '../actions'
+import { saveRoute, clearRouteforRoutePage, getRouteForRoutePage, saveRouteToUserFavorites, deleteRouteFromUserFavorites} from '../actions'
 import { withRouter } from 'react-router-dom'
 
 class RouteCard extends React.Component {
@@ -44,7 +44,11 @@ class RouteCard extends React.Component {
         color: "grey"
       })
 
-      RestfulAdapter.deleteFetch("saved_routes", body)
+      RestfulAdapter.deleteFetch("saved_routes", this.props.route.id)
+      .then(res => {
+        this.props.deleteRouteFromUserFavorites(this.props.route)
+
+      })
 
     }
 
@@ -81,4 +85,4 @@ const mapStateToProps = (state) => {
   return {userId: state.usersReducer.user.id}
 }
 
-export default withRouter(connect(mapStateToProps, {saveRoute, clearRouteforRoutePage, getRouteForRoutePage, saveRouteToUserFavorites})(RouteCard))
+export default withRouter(connect(mapStateToProps, {saveRoute, clearRouteforRoutePage, getRouteForRoutePage, saveRouteToUserFavorites, deleteRouteFromUserFavorites})(RouteCard))
