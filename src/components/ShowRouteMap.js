@@ -16,8 +16,7 @@ const ShowRouteMap = compose(
     withScriptjs,
     lifecycle({
       componentDidMount(){
-        console.log(this.props.route.markers)
-        debugger
+
         let revertMarkers = this.props.route.markers.split(",").map(point => {
           let obj = {}
           obj.lat = parseFloat(point.split("^")[0])

@@ -9,7 +9,6 @@ export default function usersReducer(state = { user: null , savedRoutes: [], err
     case "ADD_SAVED_ROUTE_TO_USER":
       return {...state, savedRoutes: [...state.savedRoutes, action.payload]}
     case "DELETE_SAVED_ROUTE_FROM_USER":
-    debugger
       let routeToRemove = state.savedRoutes.indexOf(action.payload)
       return {...state, savedRoutes: [...state.savedRoutes.slice(0, routeToRemove), ...state.savedRoutes.slice(routeToRemove+1)]}
     default:

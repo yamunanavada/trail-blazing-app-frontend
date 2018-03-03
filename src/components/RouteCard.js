@@ -17,7 +17,6 @@ class RouteCard extends React.Component {
 
 
   handleHeartClick = (event) => {
-    console.log(event)
     // Should create or delete an instance of a saved route on the backend
     // depends on the state of the card
     let body = { saved_route: {

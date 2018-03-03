@@ -1,7 +1,6 @@
 import React from 'react'
 
 const YourProfileDetails = (props) => {
-  console.log(props)
 
   return (
     <div id="profile-description">

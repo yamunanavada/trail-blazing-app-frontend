@@ -98,3 +98,17 @@ export class GoogleMapAdapter {
     return fetch(URL).then(res => res.json())
   }
 }
+
+export class SavedRouteAdapter {
+  static deleteSavedRoute = (body) => {
+    return fetch(`${baseUrl}/destroy_favorite`,{
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        Authorization: localStorage.getItem('jwt')
+      },
+      body: JSON.stringify(body)
+    }).then(res => res.json())
+  }
+}
