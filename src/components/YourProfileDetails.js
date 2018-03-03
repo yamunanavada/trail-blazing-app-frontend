@@ -5,7 +5,6 @@ const YourProfileDetails = (props) => {
 
   return (
     <div id="profile-description">
-      HEY DOES THIS FUCKING WORK
       <h3> {props.user.first_name + " " + props.user.last_name}</h3>
     </div>
   )
