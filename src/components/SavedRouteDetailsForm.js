@@ -46,7 +46,7 @@ class SavedRouteDetailsForm extends React.Component {
         <h3> Please describe your experience running this route. </h3>
         <form onSubmit={this.handleSavedRouteUpdateSubmit}>
           <label for="rating"> Rating </label>
-          <input type="number" name="rating" placeholder="Rating (1 - 5) ..." onChange={this.handleInputChange}/><br></br>
+          <input type="number" name="rating" min="1" max="5" placeholder="Rating (1 - 5) ..." onChange={this.handleInputChange}/><br></br>
           <label for="rating"> Comments </label>
           <input type="text" name="comment" placeholder="Comment..." onChange={this.handleInputChange}/><br></br>
           <input type="submit" value="submit" />

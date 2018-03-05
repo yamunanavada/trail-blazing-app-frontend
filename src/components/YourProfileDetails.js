@@ -4,9 +4,10 @@ const YourProfileDetails = (props) => {
 
   return (
     <div id="profile-description">
-      <h3> {props.user.first_name + " " + props.user.last_name}</h3>
+      <h1> {props.user.first_name + " " + props.user.last_name}</h1>
     </div>
   )
+
 
 }
 

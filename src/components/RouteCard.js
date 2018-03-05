@@ -66,6 +66,18 @@ class RouteCard extends React.Component {
 
   }
 
+  handleRating = () => {
+    let rating = {1: "★", 2: "★★", 3: "★★★", 4: "★★★★", 5: "★★★★★"}
+  }
+
+  handleDifficult = () => {
+    let colors = {"easy": "green", "moderate": "yellow", "difficult": "red"}
+
+    return colors[this.props.route.difficulty]
+  }
+
+
+
 
   render() {
     console.log(this.props)
@@ -73,11 +85,11 @@ class RouteCard extends React.Component {
       <div className="route-card">
 
         <MiniMap markers={this.props.route.markers} lat={this.props.route.startingcityLat} lng={this.props.route.startingcityLng}/>
-    
+
         <div className="route-card-description-container" onClick={this.handleCardClick}>
           <h1>{this.props.route.name}</h1>
-          <p>Distance: Approximately {this.handleDistanceCalculation()} miles </p>
-          <p>Difficulty: {this.props.route.difficulty}</p>
+          <p><b>Distance:</b> Approximately {this.handleDistanceCalculation()} miles </p>
+          <p><b>Difficulty:</b> {this.props.route.difficulty}</p>
         </div>
         <div className="save-heart" onClick={this.handleHeartClick} style={{color:this.state.color}}> ❤︎ </div>
 

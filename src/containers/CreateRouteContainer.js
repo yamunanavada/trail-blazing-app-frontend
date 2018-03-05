@@ -107,7 +107,6 @@ class CreateRouteContainer extends React.Component {
           <h3>Search for a City</h3>
           <form onSubmit={this.handleCitySubmit}>
             <input type="text" id="citysearch" name="citysearch" placeholder="City..." onChange={this.handleCityInput}/>
-            <input type="submit" value="Submit"/>
           </form>
         </div>
 

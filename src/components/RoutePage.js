@@ -17,19 +17,38 @@ const RoutePage = (props) => {
 
   }
 
+  const ratingAndComments = () => {
+    let currentRoute = props.userRoutes.filter(userroute => userroute.route_id === props.route.id)[0]
+
+    if(!!currentRoute.rating && !!currentRoute.comment){
+      return (<div>
+        <p><b> Your Rating: </b> {currentRoute.rating}</p>
+        <p><b> Your Comments: </b> {currentRoute.comment}</p>
+      </div>)
+    } else {
+      return (<div>
+        <p><b> Your Rating: </b> You have not rated this route. </p>
+        <p><b> Your Comments: </b> You have not commented on this route.</p>
+      </div>)
+
+    }
+
+  }
+
 
   return (
 
     <div className="route-page-container">
       <div className="page-title-bar">
         <h1> {props.route.name} </h1>
-        <h2 style="color:white;"> {props.route.city} </h2>
+        <h2> {props.route.city} </h2>
       </div>
       <ShowRouteMap waypoints={props.route.markers}/>
       <div className="route-page-description-container">
         <p><b>Description: </b> {props.route.description}</p>
         <p><b>Distance: </b> Approximately {handleDistanceCalculation()} miles</p>
         <p><b>Difficulty Level: </b> {props.route.difficulty}</p>
+        <div>{ratingAndComments()}</div>
       <button id="update-saved-route-btn" onClick={handleButtonClick}> Update Your Rating  </button>
       <div className="modal">
         <SavedRouteDetailsForm />

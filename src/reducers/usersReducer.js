@@ -17,7 +17,6 @@ export default function usersReducer(state = { user: null , savedRoutes: [], use
       let updatedRoute = state.savedRoutes.indexOf(action.payload.route)
       let updatedUserRoute = state.userRoutes.indexOf(state.userRoutes.filter(route => route.id === action.payload.userRoute.id)[0])
 
-      debugger
       return {...state, savedRoutes: [...state.savedRoutes.slice(0, updatedRoute), action.payload.route, ...state.savedRoutes.slice(updatedRoute+1)], userRoutes: [...state.userRoutes.slice(0, updatedUserRoute), action.payload.userRoute, ...state.userRoutes.slice(updatedUserRoute+1)]}
 
     default:

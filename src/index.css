@@ -2,7 +2,7 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Dosis', sans-serif;
-  background-color: #333
+  background-color: #62676A
 }
 
 .navbar-links {
@@ -10,7 +10,7 @@ body {
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #333;
+    background-color: #62676A;
 }
 
 .navbar-li {
@@ -35,11 +35,11 @@ li a {
 
 /* Change the link color to #111 (black) on hover */
 li a:hover {
-    background-color: #0585D0;
+    background-color: #10A3C5;
 }
 
-.active {
-    background-color: #4CAF50;
+li a:active {
+    background-color: #10A3C5;
 }
 
 .create-container {
@@ -76,7 +76,7 @@ li a:hover {
    text-align: center;
    /* height: 40vmin; */
    display: inline-block;
-   background-color: #0585D0;
+   background-color: #10A3C5;
    box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19) !important
 
 }
@@ -90,17 +90,18 @@ li a:hover {
    text-align: center;
    color: white;
    display: inline-block;
-   background-color: #0585D0;
+   background-color: #10A3C5;
    box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19) !important
 
 }
 
 #update-saved-route-btn {
-  background-color: black; /* Green */
+  background-color: #12292E; /* Green */
   height: 40px;
   border: none;
   color: white;
-  padding: 15px 32px;
+  padding: 15px 30px;
+  margin-bottom: 10px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
@@ -119,8 +120,8 @@ li a:hover {
 
 .signin-component > h1 {
   color: white;
-  font-family: 'Dosis', sans-serif;
-  font-size: 200%;
+  font-family: 'Roboto', cursive;
+  font-size: 50px;
   grid-column-start: 3;
   grid-column-end: 5;
   grid-row-start: 1;
@@ -184,9 +185,11 @@ li a:hover {
 }
 
 #profile-description {
+  text-align: center;
+  font-family: 'Nanum Brush Script', cursive;
   grid-column-start: 2;
   grid-column-end: 6;
-  background-color: #0585D0;
+  background-color: #10A3C5;
   color: white;
   box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19) !important
 }
@@ -200,7 +203,7 @@ li a:hover {
    text-align: center;
    /* height: 40vmin; */
    display: inline-block;
-   background-color: #0585D0;
+   background-color: #1D3A4C;
    box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19) !important
 }
 
@@ -209,12 +212,17 @@ li a:hover {
   grid-column-end: 6;
   grid-row-start: 3;
   grid-row-end: 7;
-  border: 1px solid black;
   text-align: center;
   /* height: 40vmin; */
   display: inline-block;
-  background-color: white;
+  color: white;
+  background-color: #10A3C5;
+  opacity: 0.8;
   box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19) !important
+}
+
+#create-route-form-form {
+  margin-top: 50px
 }
 
 .signin-form {
@@ -281,12 +289,12 @@ li a:hover {
 }
 
 .search-city-form {
-  grid-column-start: 3;
-  grid-column-end: 5;
-  grid-row-start: 2;
-  grid-row-end: 3;
+  grid-column-start: 2;
+  grid-column-end: 6;
+  grid-rows: 2 /span 1;
+  height: 100%;
   text-align: center;
-  background-color: #0585D0;
+  background-color: #10A3C5;
   opacity: 0.8;
   color: white;
   box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19) !important
@@ -294,14 +302,30 @@ li a:hover {
 
 .search-form {
   grid-column-start: 2;
-  grid-column-end: 4;
+  grid-column-end: 6;
   grid-row-start: 2;
   grid-row-end: 3;
   text-align: center;
-  background-color: #0585D0;
+  /* background-color: #0585D0; */
   opacity: 0.8;
+  /* box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19) !important */
+}
+
+.search-form < input[type=text], select {
   box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19) !important
 }
+
+#no-routes-box {
+  grid-column-start: 3;
+  grid-column-end: 7;
+  grid-row-start: 3;
+  grid-row-end: 4;
+  text-align: center;
+  color: white;
+  font-size: 50px;
+  font-family: 'Roboto', cursive;
+}
+
 
 
 .route-card-container {
@@ -317,7 +341,7 @@ li a:hover {
   grid-column: span 2;
   display: grid;
   grid-template-columns: repeat(3, 1fr);
-  background-color: #0585D0;
+  background-color: #10A3C5;
   height: 400px;
   opacity: 0.5;
   margin: 10px;
@@ -356,7 +380,7 @@ li a:hover {
   /* grid-column-start: 4; */
   position: relative;
   left: 85%;
-  top: -9%;
+  top: -10%;
   float: right;
   text-align: top;
   margin-bottom: 30px;
@@ -368,7 +392,7 @@ li a:hover {
 
 .save-heart:hover {
   font-size: 40px;
-  margin-top: 2px;
+  margin-bottom: 10px;
   margin-right: 5px;
 }
 
@@ -384,7 +408,7 @@ input[type=text], select {
     box-sizing: border-box;
 }
 
-input[type=password], select {
+input[type=number] {
     width: 60%;
     font-family: 'Dosis', sans-serif;
     padding: 12px 20px;
@@ -395,7 +419,30 @@ input[type=password], select {
     box-sizing: border-box;
 }
 
-input[type=date], select {
+input[type=textarea] {
+    width: 60%;
+    rows: 4;
+    font-family: 'Dosis', sans-serif;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type=password] {
+    width: 60%;
+    font-family: 'Dosis', sans-serif;
+    padding: 12px 20px;
+    margin: 8px 0;
+    display: inline-block;
+    border: 1px solid #ccc;
+    border-radius: 4px;
+    box-sizing: border-box;
+}
+
+input[type=date] {
     width: 60%;
     padding: 12px 20px;
     font-family: 'Dosis', sans-serif;
@@ -409,7 +456,8 @@ input[type=date], select {
 
 input[type=submit] {
     width: 80%;
-    background-color: #4CAF50;
+    font-size: 15px;
+    background-color: #12292E;
     font-family: 'Dosis', sans-serif;
     color: white;
     padding: 14px 20px;
@@ -420,7 +468,7 @@ input[type=submit] {
 }
 
 input[type=submit]:hover {
-    background-color: #45a049;
+    background-color: #186E82;
 }
 
 
