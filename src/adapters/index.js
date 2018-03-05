@@ -111,4 +111,16 @@ export class SavedRouteAdapter {
       body: JSON.stringify(body)
     }).then(res => res.json())
   }
+
+  static updateSavedRoute = (body) => {
+    return fetch (`${baseUrl}/update_favorite`,{
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+        Accept: "application/json",
+        Authorization: localStorage.getItem('jwt')
+      },
+      body: JSON.stringify(body)
+    }).then(res => res.json())
+  }
 }

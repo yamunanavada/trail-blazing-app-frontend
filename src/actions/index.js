@@ -1,5 +1,5 @@
 // //This is just one example of an adapter class for containing our fetches
-import { RestfulAdapter, LoggedIn } from "../adapters";
+import { RestfulAdapter, SavedRouteAdapter, LoggedIn } from "../adapters";
 
 
 export function updateStartingCity(citydata) {
@@ -107,4 +107,17 @@ export function saveRouteToUserFavorites(route){
 
 export function deleteRouteFromUserFavorites(route){
   return { type: "DELETE_SAVED_ROUTE_FROM_USER", payload: route}
+}
+
+
+export function updateDetailForSavedRoute(route, res){
+  return {type: "UPDATE_SAVED_ROUTE", payload: {route: route, userRoute: res}}
+}
+
+export function updateSavedRoute(route, body){
+  return dispatch => {
+    SavedRouteAdapter.updateSavedRoute(body).then(res => {
+      return dispatch(updateDetailForSavedRoute(route, res))
+    })
+  }
 }

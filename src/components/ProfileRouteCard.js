@@ -20,8 +20,6 @@ class ProfileRouteCard extends React.Component {
       this.props.deleteRouteFromUserFavorites(this.props.route)
 
     })
-
-
   }
 
   handleCardClick = (event) => {
@@ -32,14 +30,20 @@ class ProfileRouteCard extends React.Component {
 
   }
 
+  handleDistanceCalculation = () => {
+    return (this.props.route.distance * 0.621371 / 1000).toFixed(1)
+
+  }
+
 
   render() {
+
     return (
       <div className="route-card">
         <MiniMap markers={this.props.route.markers} lat={this.props.route.startingcityLat} lng={this.props.route.startingcityLng}/>
         <div className="route-card-description-container" onClick={this.handleCardClick}>
           <h1>{this.props.route.name}</h1>
-          <p>Distance: {this.props.route.distance} meters</p>
+          <p>Distance: Approximately {this.handleDistanceCalculation()} miles</p>
           <p>Difficulty: {this.props.route.difficulty}</p>
         </div>
         <div className="save-heart" onClick={this.handleRemoveClick} > X </div>

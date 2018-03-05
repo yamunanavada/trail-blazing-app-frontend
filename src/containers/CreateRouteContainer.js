@@ -3,7 +3,7 @@ import Map from "../components/Map"
 import CreateRouteDetailsForm from "../components/CreateRouteDetailsForm"
 import { GoogleMapAdapter } from "../adapters"
 import { connect} from 'react-redux'
-import { updateStartingCity, getRouteForRoutePage } from '../actions'
+import { updateStartingCity, getRouteForRoutePage, saveRoute, saveRouteToUserFavorites } from '../actions'
 import { RestfulAdapter } from '../adapters'
 import { withRouter } from 'react-router-dom'
 
@@ -79,6 +79,18 @@ class CreateRouteContainer extends React.Component {
     RestfulAdapter.createFetch("routes", body).then(res => {
       this.props.getRouteForRoutePage(res)
       let id = res.id
+      let route = res
+      console.log("this is a create fetch", route)
+
+      let savedRouteBody = {
+        user_id: this.props.user.id,
+        route_id: id
+      }
+      RestfulAdapter.createFetch("saved_routes", savedRouteBody)
+        .then(res => {
+          this.props.saveRoute(route)
+          this.props.saveRouteToUserFavorites(route)
+        })
       this.props.history.push(`/routes/${id}`)
     })
     // may need to add a fetch to create a saved_route
@@ -116,4 +128,4 @@ class CreateRouteContainer extends React.Component {
  }
 
 
-export default withRouter(connect(mapStateToProps, {updateStartingCity, getRouteForRoutePage})(CreateRouteContainer))
+export default withRouter(connect(mapStateToProps, {updateStartingCity, getRouteForRoutePage, saveRoute, saveRouteToUserFavorites})(CreateRouteContainer))

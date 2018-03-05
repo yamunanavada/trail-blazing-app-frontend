@@ -26,8 +26,14 @@ class SignIn extends React.Component {
   handleLoginSubmit = (event) => {
     event.preventDefault()
     this.props.loginUser(this.state.username, this.state.password)
-
     this.props.history.push(`/findroutes`)
+
+    // if (!!this.props.user){
+    //   this.props.history.push(`/findroutes`)
+    // } else {
+    //   alert("You entered an incorrect username or password!")
+    // }
+
   }
 
 
