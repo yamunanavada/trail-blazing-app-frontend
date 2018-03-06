@@ -1,8 +1,9 @@
 body {
   margin: 0;
   padding: 0;
-  font-family: 'Dosis', sans-serif;
-  background-color: #62676A
+  font-family: 'Source Sans Pro', sans-serif;
+  background-color: #62676A;
+  opacity: 0.8px
 }
 /* 62676A */
 
@@ -15,7 +16,7 @@ body {
 }
 
 .navbar-li {
-  font-family: 'Dosis', sans-serif;
+  font-family: 'Source Sans Pro', sans-serif;
     float: right;
 }
 .navbar-li <h1 {
@@ -70,9 +71,9 @@ li a:active {
 
 .route-page-map-container {
   grid-column-start: 2;
-   grid-column-end: 6;
+   grid-column-end: 5;
    grid-row-start: 2;
-   grid-row-end: 5;
+   grid-row-end: 7;
    border: 1px solid black;
    text-align: center;
    /* height: 40vmin; */
@@ -83,12 +84,13 @@ li a:active {
 }
 
 .route-page-description-container {
-  grid-column-start: 2;
+  grid-column-start: 5;
    grid-column-end: 6;
-   grid-row-start: 5;
+   grid-row-start: 2;
    grid-row-end: 7;
    border: 1px solid black;
-   text-align: center;
+   padding: 20px;
+   text-align: left;
    color: white;
    display: inline-block;
    background-color: #10A3C5;
@@ -97,16 +99,24 @@ li a:active {
 }
 
 #update-saved-route-btn {
+  grid-column-start: 6 / span 1;
+  grid-row-start: 5;
+  margin-bottom: 50px;
   background-color: #12292E; /* Green */
   height: 40px;
   border: none;
   color: white;
-  padding: 15px 30px;
-  margin-bottom: 10px;
+  padding-bottom: 10px;
+  padding-top: 10px;
   text-align: center;
   text-decoration: none;
   display: inline-block;
   font-size: 16px;
+  border-radius: 5px;
+}
+
+#update-saved-route-btn:hover {
+    background-color: #186E82;
 }
 
 .signin-component {
@@ -121,7 +131,7 @@ li a:active {
 
 .signin-component > h1 {
   color: white;
-  font-family: 'Roboto', cursive;
+  font-family: 'Alegreya', cursive;
   font-size: 50px;
   grid-column-start: 3;
   grid-column-end: 5;
@@ -153,14 +163,14 @@ li a:active {
 }
 
 #h1-small-landing {
-  font-family: 'Roboto', cursive;
+  font-family: 'Alegreya', cursive;
   font-size: 30px;
   padding: 0px;
   margin: 0px;
 }
 
 #h1-large-landing {
-  font-family: 'Roboto', cursive;
+  font-family: 'Alegreya', cursive;
   font-size: 100px;
   padding: 0px;
   margin: 0px;
@@ -187,7 +197,7 @@ li a:active {
 
 #profile-description {
   text-align: center;
-  font-family: 'Nanum Brush Script', cursive;
+  font-family: 'Alegreya', cursive;
   grid-column-start: 2;
   grid-column-end: 6;
   background-color: #10A3C5;
@@ -289,6 +299,14 @@ li a:active {
   text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
 
+.page-title-bar > h2 {
+  color: white;
+  opacity: 1.0;
+  font-family: 'Roboto', cursive;
+  font-size: 30px;
+  text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
+}
+
 .search-city-form {
   grid-column-start: 2;
   grid-column-end: 6;
@@ -344,17 +362,16 @@ li a:active {
   grid-template-columns: repeat(3, 1fr);
   background-color: #10A3C5;
   height: 400px;
-  opacity: 0.5;
+  opacity: 0.8;
   margin: 10px;
   box-shadow: 2px 2px 6px 0px  rgba(0,0,0,0.3);
   color: white;
 }
 
 .route-card:hover {
-  opacity: 0.8;
+  opacity: 1.0;
   margin: 5px;
   box-shadow: 0 8px 16px 0 rgba(0,0,0,0.2);
-
 }
 
 
@@ -370,7 +387,8 @@ li a:active {
 .route-card-description-container {
   grid-column: span 4;
   height: 200px;
-   text-align: center;
+   text-align: left;
+   margin-right: 10px;
    /* height: 40vmin; */
    display: inline-block;
    overflow: auto;
@@ -385,14 +403,14 @@ li a:active {
   float: right;
   text-align: top;
   margin-bottom: 30px;
-  margin-right: 15px;
-  font-size: 30px;
+  margin-right: 10px;
+  font-size: 25px;
   color: grey;
   text-shadow: -1px 0 grey, 0 1px grey, 1px 0 grey, 0 -1px grey;
 }
 
 .save-heart:hover {
-  font-size: 40px;
+  font-size: 35px;
   margin-bottom: 10px;
   margin-right: 5px;
 }

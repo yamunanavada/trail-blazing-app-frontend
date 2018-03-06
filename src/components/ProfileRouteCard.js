@@ -32,6 +32,10 @@ class ProfileRouteCard extends React.Component {
 
   handleDistanceCalculation = () => {
     return (this.props.route.distance * 0.621371 / 1000).toFixed(1)
+  }
+
+  handleDifficulty = () => {
+    return this.props.route.difficulty.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();})
 
   }
 
@@ -43,8 +47,8 @@ class ProfileRouteCard extends React.Component {
         <MiniMap markers={this.props.route.markers} lat={this.props.route.startingcityLat} lng={this.props.route.startingcityLng}/>
         <div className="route-card-description-container" onClick={this.handleCardClick}>
           <h1>{this.props.route.name}</h1>
-          <p>Distance: Approximately {this.handleDistanceCalculation()} miles</p>
-          <p>Difficulty: {this.props.route.difficulty}</p>
+          <p>Approximately {this.handleDistanceCalculation()} miles</p>
+          <p>{this.handleDifficulty()} run</p>
         </div>
         <div className="save-heart" onClick={this.handleRemoveClick} > X </div>
       </div>

@@ -70,12 +70,10 @@ class RouteCard extends React.Component {
     let rating = {1: "★", 2: "★★", 3: "★★★", 4: "★★★★", 5: "★★★★★"}
   }
 
-  handleDifficult = () => {
-    let colors = {"easy": "green", "moderate": "yellow", "difficult": "red"}
+  handleDifficulty = () => {
+    return this.props.route.difficulty.replace(/\w\S*/g, function(txt){return txt.charAt(0).toUpperCase() + txt.substr(1).toLowerCase();})
 
-    return colors[this.props.route.difficulty]
   }
-
 
 
 
@@ -88,8 +86,8 @@ class RouteCard extends React.Component {
 
         <div className="route-card-description-container" onClick={this.handleCardClick}>
           <h1>{this.props.route.name}</h1>
-          <p><b>Distance:</b> Approximately {this.handleDistanceCalculation()} miles </p>
-          <p><b>Difficulty:</b> {this.props.route.difficulty}</p>
+          <p>Approximately {this.handleDistanceCalculation()} miles </p>
+          <p>{this.handleDifficulty()} run</p>
         </div>
         <div className="save-heart" onClick={this.handleHeartClick} style={{color:this.state.color}}> ❤︎ </div>
 

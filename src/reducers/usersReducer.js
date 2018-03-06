@@ -2,7 +2,7 @@ export default function usersReducer(state = { user: {}, savedRoutes: [], userRo
   switch (action.type) {
     case "SET_CURRENT_USER":
       localStorage.setItem('jwt', action.payload.jwt)
-      debugger
+
       return {...state, user: action.payload.user, savedRoutes: action.payload.saved_routes, userRoutes: action.payload.user_routes} ;
 
     case "CLEAR_CURRENT_USER":

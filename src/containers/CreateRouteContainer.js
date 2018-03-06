@@ -90,8 +90,9 @@ class CreateRouteContainer extends React.Component {
         .then(res => {
           this.props.saveRoute(route)
           this.props.saveRouteToUserFavorites(route)
+          this.props.history.push(`/routes/${id}`)
         })
-      this.props.history.push(`/routes/${id}`)
+
     })
     // may need to add a fetch to create a saved_route
     // Needs to redirect to Route Page
