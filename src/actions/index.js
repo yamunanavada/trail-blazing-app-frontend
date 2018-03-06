@@ -79,9 +79,8 @@ export function getLoggedInUser() {
     // grab that function getLoggedinUser, and with the data do a dispatch(setCurrentUser(userData)), else render login page
     LoggedIn.getLoggedInUser().then(res => {
       console.log(res)
-      return dispatch => {
-        dispatch(setCurrentUser(res))
-      }
+      dispatch(setCurrentUser(res))
+
     })
   }
 }

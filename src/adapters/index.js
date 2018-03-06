@@ -79,10 +79,7 @@ export class LoggedIn {
         Accept: "application/json",
         Authorization: localStorage.getItem('jwt')
       }
-    }).then(res => {
-      console.log(res.json())
-      return res.json()
-    })
+    }).then(res => res.json())
 
   }
 }

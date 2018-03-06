@@ -17,18 +17,19 @@ class App extends Component {
 
   componentDidMount() {
 
-    const token = localStorage.getItem('jwt')
-    if (token) {
-      this.props.getLoggedInUser
 
-    } else {
-      console.log('no token!')
-    }
   }
 
 
 
   render() {
+    const token = localStorage.getItem('jwt')
+    if (token) {
+      this.props.getLoggedInUser()
+    } else {
+      console.log('no token!')
+    }
+
     const AuthYourProfileContainer = authorize(YourProfileContainer);
     const AuthCreateRouteContainer = authorize(CreateRouteContainer);
     const AuthFindRoutesContainer = authorize(FindRoutesContainer);
@@ -52,16 +53,6 @@ class App extends Component {
     );
   }
 }
-
-
-
-
-
-
-
-
-
-
 
 
 

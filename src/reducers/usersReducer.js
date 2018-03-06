@@ -1,11 +1,14 @@
-export default function usersReducer(state = { user: null , savedRoutes: [], userRoutes: [], errorMessage: ""}, action) {
+export default function usersReducer(state = { user: {}, savedRoutes: [], userRoutes: [], errorMessage: ""}, action) {
   switch (action.type) {
     case "SET_CURRENT_USER":
       localStorage.setItem('jwt', action.payload.jwt)
+      debugger
       return {...state, user: action.payload.user, savedRoutes: action.payload.saved_routes, userRoutes: action.payload.user_routes} ;
+
     case "CLEAR_CURRENT_USER":
       localStorage.clear()
       return {...state, user: null, savedRoutes: [], userRoutes: [], errorMessage: ""}
+
     case "ADD_SAVED_ROUTE_TO_USER":
     // need o add from userRoutes too
       return {...state, savedRoutes: [...state.savedRoutes, action.payload]}
