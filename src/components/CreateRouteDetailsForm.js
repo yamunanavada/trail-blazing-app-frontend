@@ -14,7 +14,7 @@ const CreateRouteDetailsForm = (props) => {
           <input type="textarea" id="routedescription" name="route_description" placeholder="Description of Route.." onChange={props.onInputChange}/><br></br>
 
           <label for="difficulty">Difficulty Level</label><br></br>
-          <select type="text" id="difficulty" name="difficulty" onChange={props.onInputChange}>
+          <select className="select-box" type="text" id="difficulty" name="difficulty" onChange={props.onInputChange}>
             <option value="easy">Easy</option>
             <option value="moderate">Moderate</option>
             <option value="difficult">Difficult</option>

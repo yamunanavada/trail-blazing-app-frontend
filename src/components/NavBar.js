@@ -17,7 +17,7 @@ const NavBar = (props) => {
 
 
   return (
-    <div>
+    <div className="navbar-wrapper">
       <ul className="navbar-links">
         {loggedIn ?
           <div>

@@ -29,11 +29,13 @@ const RoutePage = (props) => {
         You have not rated this route. </p>
       <p className="description-headers"> Your Comments <br></br>
       You have not commented on this route.</p>
+    <button id="update-saved-route-btn" onClick={handleButtonClick}> Update Your Rating  </button>
       </div>)
     } else {
       return (<div>
         <p className="description-headers"><b> Your Rating </b><br></br> {currentRoute.rating}</p>
         <p className="description-headers"><b> Your Comments </b> <br></br>{currentRoute.comment}</p>
+        <button id="update-saved-route-btn" onClick={handleButtonClick}> Update Your Rating  </button>
       </div>)
     }
 
@@ -59,7 +61,7 @@ const RoutePage = (props) => {
          <p className="description-headers">Difficulty Level<br></br>
           {props.route.difficulty}</p>
           <div>{ratingAndComments()}</div>
-          <button id="update-saved-route-btn" onClick={handleButtonClick}> Update Your Rating  </button>
+
         <div className="modal">
           <SavedRouteDetailsForm />
         </div>

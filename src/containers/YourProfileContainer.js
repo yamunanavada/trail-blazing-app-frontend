@@ -3,6 +3,7 @@ import YourProfileDetails from '../components/YourProfileDetails'
 import SavedRoutesContainer from './SavedRoutesContainer'
 import { connect } from 'react-redux'
 import CitySearch from '../components/CitySearch'
+import Footer from '../components/Footer'
 
 
 class YourProfileContainer extends React.Component {
@@ -34,7 +35,9 @@ class YourProfileContainer extends React.Component {
         <YourProfileDetails user={this.props.user}/>
 
         <SavedRoutesContainer />
+        <Footer />
       </div>
+
 
     )
   }

@@ -18,7 +18,7 @@ class TrailBlazingContainer extends React.Component {
         <div className="landing-page-title-box">
           <h1 id="h1-small-landing">Some clever tagline. </h1>
           <h1 id="h1-large-landing">Trail Blazin. </h1>
-          <h3>Some other really clever tagline.</h3>
+          <h3>Wherever you go, never be without somwehere to run.</h3>
 
         </div>
 
