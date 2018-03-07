@@ -2,9 +2,26 @@ import React from "react";
 import YourProfileDetails from '../components/YourProfileDetails'
 import SavedRoutesContainer from './SavedRoutesContainer'
 import { connect } from 'react-redux'
+import CitySearch from '../components/CitySearch'
 
 
 class YourProfileContainer extends React.Component {
+
+  state = {
+    city: "",
+  }
+
+  handleCitySearchSubmit = (event) => {
+    event.preventDefault()
+  }
+
+  handleCityChange = (event) =>{
+    event.preventDefault();
+    this.setState({
+      city: event.target.value
+    })
+
+  }
 
 
   render() {
@@ -15,6 +32,7 @@ class YourProfileContainer extends React.Component {
           <h1>Your Profile </h1>
         </div>
         <YourProfileDetails user={this.props.user}/>
+
         <SavedRoutesContainer />
       </div>
 

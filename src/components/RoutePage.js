@@ -25,13 +25,15 @@ const RoutePage = (props) => {
     console.log(currentRoute)
     if(currentRoute === undefined || (!!currentRoute.rating === false && !!currentRoute.comment===false)){
       return (<div>
-        <p><b> Your Rating: </b> You have not rated this route. </p>
-        <p><b> Your Comments: </b> You have not commented on this route.</p>
+        <p className="description-headers">Your Rating<br></br>
+        You have not rated this route. </p>
+      <p className="description-headers"> Your Comments <br></br>
+      You have not commented on this route.</p>
       </div>)
     } else {
       return (<div>
-        <p><b> Your Rating: </b> {currentRoute.rating}</p>
-        <p><b> Your Comments: </b> {currentRoute.comment}</p>
+        <p className="description-headers"><b> Your Rating </b><br></br> {currentRoute.rating}</p>
+        <p className="description-headers"><b> Your Comments </b> <br></br>{currentRoute.comment}</p>
       </div>)
     }
 
@@ -41,15 +43,21 @@ const RoutePage = (props) => {
     return (
       <div className="route-page-container">
         <div className="page-title-bar">
+
+        </div>
+        <div className="route-page-description-title">
           <h1> {props.route.name} </h1>
           <h2> {props.route.city} </h2>
         </div>
         <ShowRouteMap waypoints={props.route.markers}/>
         <div className="route-page-description-container">
           <h3>{props.route.name}</h3>
-          <p><b>Description: </b> {props.route.description}</p>
-          <p><b>Distance: </b> Approximately {handleDistanceCalculation()} miles</p>
-          <p><b>Difficulty Level: </b> {props.route.difficulty}</p>
+          <p>Description<br></br>
+          {props.route.description}</p>
+          <p className="description-headers"><b>Distance </b><br></br>
+           Approximately {handleDistanceCalculation()} miles</p>
+         <p className="description-headers">Difficulty Level<br></br>
+          {props.route.difficulty}</p>
           <div>{ratingAndComments()}</div>
           <button id="update-saved-route-btn" onClick={handleButtonClick}> Update Your Rating  </button>
         <div className="modal">

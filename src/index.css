@@ -2,21 +2,22 @@ body {
   margin: 0;
   padding: 0;
   font-family: 'Source Sans Pro', sans-serif;
-  background-color: #62676A;
+  background-color: #808388;
   opacity: 0.8px
 }
-/* 62676A */
+
+
 
 .navbar-links {
     list-style-type: none;
     margin: 0;
     padding: 0;
     overflow: hidden;
-    background-color: #62676A;
+    background-color: #808388;
 }
 
 .navbar-li {
-  font-family: 'Source Sans Pro', sans-serif;
+  font-family: 'Alegreya', sans-serif;
     float: right;
 }
 .navbar-li <h1 {
@@ -72,7 +73,7 @@ li a:active {
 .route-page-map-container {
   grid-column-start: 2;
    grid-column-end: 5;
-   grid-row-start: 2;
+   grid-row-start: 3;
    grid-row-end: 7;
    border: 1px solid black;
    text-align: center;
@@ -83,12 +84,26 @@ li a:active {
 
 }
 
+.route-page-description-title {
+  grid-column-start: 2;
+   grid-column-end: 6;
+   grid-row-start: 2;
+   grid-row-end: 3;
+   text-align: center;
+   color: white;
+   font-weight: bolder;
+   /* height: 40vmin; */
+   display: inline-block;
+   background-color: #10A3C5;
+   box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19) !important
+}
+
 .route-page-description-container {
   grid-column-start: 5;
    grid-column-end: 6;
-   grid-row-start: 2;
+   grid-row-start: 3;
    grid-row-end: 7;
-   border: 1px solid black;
+
    padding: 20px;
    text-align: left;
    color: white;
@@ -197,7 +212,9 @@ li a:active {
 
 #profile-description {
   text-align: center;
-  font-family: 'Alegreya', cursive;
+  font-family: 'Source Sans Pro', cursive;
+  margin-left: 10px;
+  margin-right: 10px;
   grid-column-start: 2;
   grid-column-end: 6;
   background-color: #10A3C5;
@@ -280,7 +297,6 @@ li a:active {
   grid-column: 1 / span 6;
   grid-row-start: 1;
   grid-row-end: 2;
-  border: 1px solid black;
   text-align: center;
   display: inline-block;
   background-image: url("cropped-runner-header.jpg");
@@ -294,7 +310,7 @@ li a:active {
   margin-top: 50px;
   color: white;
   opacity: 1.0;
-  font-family: 'Roboto', cursive;
+  font-family: 'Alegreya', cursive;
   font-size: 50px;
   text-shadow: -1px 0 black, 0 1px black, 1px 0 black, 0 -1px black;
 }
@@ -319,20 +335,76 @@ li a:active {
   box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19) !important
 }
 
+.filters-find-page {
+  grid-column-start: 5;
+  grid-column-end: 6;
+  grid-rows: 3 /span 1;
+  margin-bottom: 20px;
+  height: 100%;
+  text-align: center;
+  background-color: #10A3C5;
+  opacity: 0.8;
+  color: white;
+  box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19) !important
+}
+
 .search-form {
   grid-column-start: 2;
-  grid-column-end: 6;
+  grid-column-end: 5;
   grid-row-start: 2;
   grid-row-end: 3;
+  padding-bottom: 6px;
   text-align: center;
-  /* background-color: #0585D0; */
+  background-color: #10A3C5;
   opacity: 0.8;
-  /* box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19) !important */
+  color: white;
+  box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19) !important
 }
 
 .search-form < input[type=text], select {
   box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19) !important
 }
+
+
+.profile-search-form {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  height: 400px;
+  padding-bottom: 6px;
+  text-align: center;
+  margin: 10px;
+  background-color: #10A3C5;
+  color: white;
+  box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19) !important
+}
+
+.profile-search-form < input[type=text], select {
+  box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19) !important
+}
+
+.profile-route-cards {
+  grid-column-start: 3;
+  grid-column-end: 9;
+  display: grid;
+  grid-template-columns: repeat(6, 1fr);
+  height: auto;
+}
+
+.profile-filters-find-page {
+  grid-column-start: 5;
+  grid-column-end: 6;
+  grid-rows: 3 /span 1;
+  margin-bottom: 20px;
+  height: 100%;
+  text-align: center;
+  background-color: #10A3C5;
+  opacity: 0.8;
+  color: white;
+  box-shadow: 0 10px 16px 0 rgba(0,0,0,0.2),0 6px 20px 0 rgba(0,0,0,0.19) !important
+}
+
+
+
 
 #no-routes-box {
   grid-column-start: 3;
@@ -403,14 +475,19 @@ li a:active {
   float: right;
   text-align: top;
   margin-bottom: 30px;
-  margin-right: 10px;
-  font-size: 25px;
+  margin-right: 15px;
+  margin-left: 15px;
+  font-size: 20px;
   color: grey;
   text-shadow: -1px 0 grey, 0 1px grey, 1px 0 grey, 0 -1px grey;
 }
 
+.description-headers{
+  font-weight: bold;
+}
+
 .save-heart:hover {
-  font-size: 35px;
+  font-size: 30px;
   margin-bottom: 10px;
   margin-right: 5px;
 }
