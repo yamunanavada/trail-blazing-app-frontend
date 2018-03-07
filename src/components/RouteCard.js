@@ -85,7 +85,8 @@ class RouteCard extends React.Component {
         <MiniMap markers={this.props.route.markers} lat={this.props.route.startingcityLat} lng={this.props.route.startingcityLng}/>
 
         <div className="route-card-description-container" onClick={this.handleCardClick}>
-          <h1>{this.props.route.name}</h1>
+          <h2>{this.props.route.name}</h2>
+          <p>{this.props.route.city}</p>
           <p>Approximately {this.handleDistanceCalculation()} miles </p>
           <p>{this.handleDifficulty()} run</p>
         </div>

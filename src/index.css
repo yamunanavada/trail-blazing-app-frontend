@@ -258,7 +258,7 @@ li a:active {
 }
 
 #create-route-form-form {
-  margin-top: 50px
+  margin-top: 30px
 }
 
 .signin-form {
@@ -306,6 +306,7 @@ li a:active {
   grid-row-start: 1;
   grid-row-end: 2;
   text-align: left;
+  margin-bottom: 30px;
   vertical-align: bottom;
   display: inline-block;
   background-image: url("cropped-runner-header.jpg");
@@ -449,7 +450,7 @@ li a:active {
   height: 400px;
   opacity: 0.8;
   margin: 10px;
-  box-shadow: 2px 2px 6px 0px  rgba(0,0,0,0.3);
+  /* box-shadow: 2px 2px 6px 0px  rgba(0,0,0,0.3); */
   color: white;
 }
 
@@ -638,7 +639,7 @@ input[type=submit]:hover {
     display: none; /* Hidden by default */
     position: fixed; /* Stay in place */
     z-index: 1; /* Sit on top */
-    padding-top: 100px; /* Location of the box */
+    padding-top: 80px; /* Location of the box */
     left: 0;
     top: 0;
     width: 100%; /* Full width */
@@ -679,7 +680,11 @@ input[type=submit]:hover {
     left: 0;
     bottom: 0;
     width: 100%;
-    background-color: red;
     color: white;
-    text-align: center;
+    text-align: left;
+    margin-left: 20px;
+}
+
+.description-tag {
+  font-weight: bold;
 }

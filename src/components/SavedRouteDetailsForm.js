@@ -45,11 +45,11 @@ class SavedRouteDetailsForm extends React.Component {
         <p className="close" onClick={this.handleButtonClick}> X </p>
         <h3> Please describe your experience running this route. </h3>
         <form onSubmit={this.handleSavedRouteUpdateSubmit}>
-          <label for="rating"> Rating </label>
+          <label for="rating"> Rating </label><br></br>
           <input type="number" name="rating" min="1" max="5" placeholder="Rating (1 - 5) ..." onChange={this.handleInputChange}/><br></br>
-          <label for="rating"> Comments </label>
+          <label for="rating"> Comments </label><br></br>
           <input type="text" name="comment" placeholder="Comment..." onChange={this.handleInputChange}/><br></br>
-          <input type="submit" value="submit" />
+          <input type="submit" value="Submit" />
         </form>
       </div>
     )

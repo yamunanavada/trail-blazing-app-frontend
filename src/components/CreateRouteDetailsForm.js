@@ -6,6 +6,7 @@ const CreateRouteDetailsForm = (props) => {
   return (
     <div className="create-route-form">
       <h3>What's your route?</h3>
+      <p>Search for a city and place markers on the map to start plotting your route.</p>
         <form id="create-route-form-form" onSubmit={props.onFormSubmit}>
           <label for="routename">Name Your Route</label><br></br>
           <input type="text" id="routename" name="route_name" placeholder="Name of Route..." onChange={props.onInputChange}/><br></br>

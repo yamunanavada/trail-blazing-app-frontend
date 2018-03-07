@@ -42,9 +42,7 @@ class FindRoutesContainer extends React.Component {
   }
 
   createRouteCards = () => {
-    if (this.props.routes.length === 0 ){
-      return (<div id="no-routes-box"><h2></h2></div>)
-    } else if(this.state.city != "" && this.props.routes.length === 0 ){
+    if(this.state.city != "" && this.props.routes.length === 0 ){
       return (<div id="no-routes-box">NO ROUTES FOUND!</div>)
     } else {
 
