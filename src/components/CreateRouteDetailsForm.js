@@ -16,9 +16,9 @@ const CreateRouteDetailsForm = (props) => {
 
           <label for="difficulty">Difficulty Level</label><br></br>
           <select className="select-box" type="text" id="difficulty" name="difficulty" onChange={props.onInputChange}>
-            <option value="easy">Easy</option>
-            <option value="moderate">Moderate</option>
-            <option value="difficult">Difficult</option>
+            <option value="Easy">Easy</option>
+            <option value="Moderate">Moderate</option>
+            <option value="Difficult">Difficult</option>
           </select>
           <input type="submit" value="Submit"/>
         </form>

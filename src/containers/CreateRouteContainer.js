@@ -22,7 +22,7 @@ class CreateRouteContainer extends React.Component {
         newRouteDetails: {
           route_name: "",
           route_description: "",
-          difficulty: "easy"
+          difficulty: "Easy"
         }
       }
   }
